@@ -1,0 +1,157 @@
+/* Google Fonts - Poppins */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+
+/* * { */
+/*   margin: 0; */
+/*   padding: 0; */
+/*   box-sizing: border-box; */
+/*   font-family: "Poppins", sans-serif; */
+/* } */
+.hero {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  padding: 30px 40px;
+  padding-bottom: 40px;
+  justify-content: center;
+  background-color: transparent;
+}
+.container-nw {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  /* height: 450px; */
+  /* width: 100%; */
+  padding: 25px;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+.container-nw header {
+  font-size: 22px;
+  font-weight: 600;
+  color: #333;
+}
+
+.container-nw form {
+  margin: 0;
+  margin-top: 10px;
+}
+
+
+.hero .hero-content {
+  /* width: 90%; */
+  display: flex;
+  background-color: #efefef;
+  flex-direction: row;
+  /* height: 450px; */
+  border-radius: 10px;
+  box-shadow: 2px 2px 4px #555;
+  padding: 20px 40px;
+  margin-bottom: 20px;
+}
+.hero h1 {
+  font-family: 'Rufina', sans-serif;
+  font-size: 50px;
+  font-weight: 700;
+  margin-bottom: 0;
+  margin-right: 80px;
+  margin-top: 0;
+}
+
+.hero p {
+  font-family: 'Rubik', sans-serif;
+  margin-bottom: 50px;
+  /* color: #0588c5; */
+}
+
+.left {
+  width: 750px;
+  padding-left: 10px;
+  align-items: center;
+  align-self: center;
+}
+
+.right {
+  margin: 0px;
+  margin-top: 40px;
+  margin-left: 25px;
+}
+
+.content-input {
+  margin: 0;
+  width: 100%;
+}
+
+.field {
+  margin-bottom: 20px;
+}
+.input-field {
+  position: relative;
+  height: 55px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.input-field input {
+  height: 100%;
+  width: 95%;
+  outline: none;
+  border: none;
+  border-radius: 8px;
+  padding: 0 15px;
+  border: 1px solid #d1d1d1;
+}
+.invalid input {
+  border-color: #d93025;
+}
+.input-field .show-hide {
+  position: absolute;
+  right: 13px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+  color: #919191;
+  cursor: pointer;
+  padding: 3px;
+}
+.field .error {
+  display: flex;
+  align-items: center;
+  margin-top: 6px;
+  color: #d93025;
+  font-size: 13px;
+  display: none;
+}
+.invalid .error {
+  display: flex;
+}
+.error .error-icon {
+  margin-right: 6px;
+  font-size: 15px;
+}
+.create-password .error {
+  align-items: flex-start;
+}
+.create-password .error-icon {
+  margin-top: 4px;
+}
+.button {
+  margin: 25px 0 6px;
+}
+.button input {
+  color: #fff;
+  font-size: 16px;
+  font-weight: 400;
+  background-color: #303030;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.button input:hover {
+  background-color: #111;
+}
+
+.button input:active {
+  transform: scale(0.95);
+}

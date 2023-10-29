@@ -1,0 +1,25 @@
+
+.section-container-rg {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+.form-rgs {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 10px;
+  background: gray;
+  border-radius: 15px;
+  margin-bottom: 30px;
+}
+.input-rg{
+  margin-bottom : 10px;
+  padding : 5px;
+}
+.button-rg {
+  background-color: #fff;
+  color : black;
+  margin-bottom: 10px;
+}
