@@ -2,12 +2,14 @@
 import Router from 'express';
 import { check } from "express-validator";
 import validarCampos from "../midleware/validate.camps.js";
-import { register, update, deleteUser } from '../controllers/controllers.users.js';
+import { user_info, register, update, deleteUser } from '../controllers/controllers.users.js';
 
 
 const router = Router();
 
-
+router.post("/get-info-user",
+  [ check("id_user").not().isEmpty()], user_info
+);
 
 router.post("/register", 
     [ check("id_user").not().isEmpty(),
