@@ -1,0 +1,10 @@
+.timeline{
+    display: flex;
+    flex-direction: row;
+}
+.timeline_left{
+    flex: 0.8;
+}
+.timeline_right{
+    flex: 0.3
+}

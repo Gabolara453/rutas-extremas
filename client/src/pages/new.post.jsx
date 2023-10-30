@@ -4,8 +4,10 @@ import { useAuth } from "../context/authContext";
 import Map from "./component/map";
 import { getAllRegiones, getAllComId, getCoordRgns, getID_nwPost, getCtgs, getSbctgs, getDfct, nwPost } from "../context/auth.backend";
 import NavbarUser from "./component/navbar.Users";
+import DropFileInput from "./component/input.images";
 import ScriptForm from "./assets/js/script.form"
 import "./css/newPost.css"
+import Slidenavuser from "./component/slidenavuser";
 
 export default function NewPost() {
 
@@ -192,6 +194,9 @@ export default function NewPost() {
     console.log(`Coordenadas seleccionadas: Latitud ${lat}, Longitud ${lng}`);
   }
 
+  const onFileChange = (files) => {
+    console.log(files);
+  }
   
 
   const handleNewPost = async (event) => {
@@ -228,7 +233,10 @@ export default function NewPost() {
 
   return (
     <div>
-      <NavbarUser />
+      <div className="public">
+      <div className="public_nav">
+        <Slidenavuser />
+      </div>
       <section className="hero">
         <div className="container-nw">
           <form className="form" onSubmit={handleNewPost}>
@@ -243,8 +251,8 @@ export default function NewPost() {
                   </span>
                 </div>
                 <div className="field email-field">
-                  <div className="input-field">
-                    <input type="file" multiple name='img' placeholder='Imagenes' onChange={handleFileChange} className="email"/>
+                  <div >
+                    <DropFileInput onFileChange={(files) => onFileChange(files)} />
                   </div>
                   <span className="error email-error">
                     <i className="bx bx-error-circle error-icon"></i>
@@ -381,6 +389,7 @@ export default function NewPost() {
         </div>
       </section>
       <script  src={ScriptForm}></script>
+    </div>
     </div>
   )
 }

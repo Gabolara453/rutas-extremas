@@ -4,7 +4,9 @@ import "./css/home.css"
 import { useAuth } from "../context/authContext";
 import NavbarUser from "./component/navbar.Users";
 import { get_Post } from "../context/auth.backend";
-
+import Timeline from "./component/timeline";
+import Slidenavuser from "./component/slidenavuser";
+import "../homie.css"
 
 export function HomeUsers() {
   const auth = useAuth()
@@ -35,13 +37,24 @@ export function HomeUsers() {
   
   return (
     <>
-      <NavbarUser />
+
       <h1></h1>
-      <div>
-        <div className="div-posts section-container"> 
-          {posts}
-        </div>      
+      <section>
+      <div className="public">
+      <div className="public_nav">
+        <Slidenavuser />
       </div>
+      <div className="public_time">
+        <Timeline />
+          <h1>
+          
+          </h1>
+          <div className="div-posts section-container"> 
+            {posts}
+          </div>
+      </div>
+      </div>
+      </section>
       
     </>
     
