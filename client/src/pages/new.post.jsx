@@ -6,6 +6,7 @@ import { getAllRegiones, getAllComId, getCoordRgns, getID_nwPost, getCtgs, getSb
 import NavbarUser from "./component/navbar.Users";
 import ScriptForm from "./assets/js/script.form"
 import "./css/newPost.css"
+import Slidenavuser from "./component/slidenavuser";
 
 export default function NewPost() {
 
@@ -228,7 +229,10 @@ export default function NewPost() {
 
   return (
     <div>
-      <NavbarUser />
+      <div className="public">
+      <div className="public_nav">
+        <Slidenavuser />
+      </div>
       <section className="hero">
         <div className="container-nw">
           <form className="form" onSubmit={handleNewPost}>
@@ -381,6 +385,7 @@ export default function NewPost() {
         </div>
       </section>
       <script  src={ScriptForm}></script>
+    </div>
     </div>
   )
 }

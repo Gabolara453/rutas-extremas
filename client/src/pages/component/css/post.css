@@ -1,0 +1,6 @@
+.post_img{
+    display: flex;
+    flex: column;
+    width: 20%;
+    height: 20%;
+}

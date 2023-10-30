@@ -1,0 +1,13 @@
+.public{
+    display: flex;
+    flex-direction: row;
+}
+.public_nav{
+    flex: 0.5
+}
+.public_time{
+    flex: 0.7
+}
+.hero{
+    flex: 0.7
+}

@@ -1,0 +1,42 @@
+.slidenav{
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 1;
+}
+
+.slidenav_logo{
+    width: 120px;
+    height: 120px;
+    margin: 2px;
+    
+}
+.slidenav_buttons{
+    display: flex;
+    flex-direction: column;
+
+}
+.slidenav_button{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border: 0;
+    margin: 5px 10px 5px 10px;
+    padding: 10px 15px 10px 15px;
+    border-radius: 15px;
+    width: 100%;
+}
+.slidenav_button:hover{
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.12);
+}
+.slidenav_button > span{
+    font-size: 18px;
+    font-weight: bolder;
+    margin-left: 18px;
+}
+.slidenav_more{
+    position: fixed;
+    bottom: 3px;
+}
