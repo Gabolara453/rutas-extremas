@@ -3,6 +3,7 @@ import './css/edit.user.css'
 
 export function EditUser(){
   return(
+
     <div>
       Edit User
     </div>
