@@ -16,6 +16,25 @@ const closeConnection = async ()  => {
   }
 }
 
+export async function get_user(id_user){
+  try{
+    connection = await oracleDB.getConnection(connection_db);
+    const response = await connection.execute(
+      `select U.username, U.displayName, U.email, U.fecha_naci, R.nombre_region, C.nombre_comuna
+        from usuario U inner join ubicacion_user UB on U.id_ubi_user = UB.id
+        inner join regiones R on UB.id_rgn_u = R.id 
+        inner join comunas C on UB.id_cma_u = C.id
+        where U.id_user = :id_user`, [id_user]
+    );
+    const resultado = response.rows[0];
+    return resultado;
+  } catch (error) {
+    return console.error(error);
+  } finally {
+    closeConnection();
+  }
+}
+
 export async function createUser( id_user, username, displayName, email, fecha_naci, region, comuna, accessToken ) {
   try {
     connection = await oracleDB.getConnection(connection_db);
