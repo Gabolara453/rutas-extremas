@@ -13,9 +13,7 @@ const DropFileInput = props => {
     const [fileList, setFileList] = useState([]);
 
     const onDragEnter = () => wrapperRef.current.classList.add('dragover');
-
     const onDragLeave = () => wrapperRef.current.classList.remove('dragover');
-
     const onDrop = () => wrapperRef.current.classList.remove('dragover');
 
     const onFileDrop = (e) => {
@@ -47,7 +45,7 @@ const DropFileInput = props => {
                     <img src={uploadImg} alt="" />
                     <p>Drag & Drop your files here</p>
                 </div>
-                <input type="file" value="" onChange={onFileDrop}/>
+                <input type="file" value="" multiple onChange={onFileDrop}/>
             </div>
             {
                 fileList.length > 0 ? (
@@ -58,7 +56,7 @@ const DropFileInput = props => {
                         {
                             fileList.map((item, index) => (
                                 <div key={index} className="drop-file-preview__item">
-                                    <img src={ImageConfig[item.type.split('/')[1]] || ImageConfig['default']} alt="" />
+                                    <img src={ImageConfig[item.type.split('/')[1]] || ImageConfig['default']} alt={item.name} />
                                     <div className="drop-file-preview__item__info">
                                         <p>{item.name}</p>
                                         <p>{item.size}B</p>

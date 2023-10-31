@@ -156,35 +156,6 @@ export default function NewPost() {
 
   }, [id_ct]);
 
-  useEffect(() => {
-    if(!fileUrls) return;
-    console.log("file", fileUrls)
-
-    const [ url1, url2, url3, url4, url5 ] = fileUrls;
-    setImg1(url1);
-    setImg2(url2);
-    setImg3(url3);
-    setImg4(url4);
-    setImg5(url5);
-    
-
-  }, [fileUrls])
-
-
-  const handleFileChange = async (event) => {
-    const filesUp = event.target.files;
-    const fileList = [];
-
-    for (let i = 0; i < filesUp.length; i++) {
-      fileList.push(filesUp[i]);
-    }
-    setFiles(fileList); 
-    const result = await auth.setPostImages(files, id_post);
-    setFileUrls(result)
-    
-    
-  };
-
   const handleClickCoord = (valor) => {
     setClickedPosition(valor);
     const { lat, lng } = valor;
@@ -194,202 +165,224 @@ export default function NewPost() {
     console.log(`Coordenadas seleccionadas: Latitud ${lat}, Longitud ${lng}`);
   }
 
-  const onFileChange = (files) => {
+  const onFileChange = async (files) => {
     console.log(files);
+    setFiles(files); 
+    
   }
   
 
   const handleNewPost = async (event) => {
     event.preventDefault();
+    if(files) {
+      const result = await auth.setPostImages(files, id_post);
+      setFileUrls(result)
+      if(fileUrls){
+        const [ url1, url2, url3, url4, url5 ] = fileUrls;
+        setImg1(url1);
+        setImg2(url2);
+        setImg3(url3);
+        setImg4(url4);
+        setImg5(url5);
+        
+        console.log(id, id_ct, id_sb_ct, titulo, descp1, descp2, descp3, descp4, 
+          descp5, id_dfct, id_region, id_comuna, img1, img2, img3, img4, 
+          img5, coordx, coordy)
+        await nwPost(
+          id, id_ct, id_sb_ct, titulo, descp1, descp2, descp3, descp4, 
+          descp5, id_dfct, id_region, id_comuna, img1, img2, img3, img4, 
+          img5, coordx, coordy)
+          .then((data) => {
+            if( data.success === true ) {
+              alert("Post Registrado Correctamente");
+              navigate("/home");
+            } else {
+              console.log(data)
+              alert("Faltan campos por seleccionar y rellenar, vuelve a ingresarlos e intentalo de nuevo")
+              // const arrayEr = 
+              // data.map((item) => {
+              //   // console.log(item.msg)
+              //   alert(`${item.msg} in ${item.path}`)
+              // })
+              // alert(arrayEr)
+              navigate("/user/newPost")
+            }
+          }).catch((error) => {
+            console.error('Error al obtener los datos del post:', error.data);
+          });
+      }else {
+        alert("Faltan Datos por ingresar");
+      }
+    }else {
+      alert("Faltan Datos por ingresar");
+    }
     
-    console.log(id, id_ct, id_sb_ct, titulo, descp1, descp2, descp3, descp4, 
-      descp5, id_dfct, id_region, id_comuna, img1, img2, img3, img4, 
-      img5, coordx, coordy)
-    await nwPost(
-      id, id_ct, id_sb_ct, titulo, descp1, descp2, descp3, descp4, 
-      descp5, id_dfct, id_region, id_comuna, img1, img2, img3, img4, 
-      img5, coordx, coordy)
-      .then((data) => {
-        if( data.success === true ) {
-          alert("Post Registrado Correctamente");
-          navigate("/home");
-        } else {
-          console.log(data)
-          alert("Faltan campos por seleccionar y rellenar, vuelve a ingresarlos e intentalo de nuevo")
-          // const arrayEr = 
-          // data.map((item) => {
-          //   // console.log(item.msg)
-          //   alert(`${item.msg} in ${item.path}`)
-          // })
-          // alert(arrayEr)
-          navigate("/user/newPost")
-        }
-      }).catch((error) => {
-        console.error('Error al obtener los datos del post:', error.data);
-      });
 
   }
-
+  
 
   return (
     <div>
       <div className="public">
-      <div className="public_nav">
-        <Slidenavuser />
-      </div>
-      <section className="hero">
-        <div className="container-nw">
-          <form className="form" onSubmit={handleNewPost}>
-            <header>NewPost</header>
-            <div className="hero-content">
-              <div className="left">
-                <Map mapCnter={mapCenter} ClickCoord={handleClickCoord} />
-                <div className="field email-field">
-                  <span className="error email-error">
-                    <i className="bx bx-error-circle error-icon"></i>
-                    <p className="error-text">Please enter a valid email</p>
-                  </span>
-                </div>
-                <div className="field email-field">
-                  <div >
-                    <DropFileInput onFileChange={(files) => onFileChange(files)} />
-                  </div>
-                  <span className="error email-error">
-                    <i className="bx bx-error-circle error-icon"></i>
-                    <p className="error-text">Please enter a valid email</p>
-                  </span>
-                </div>
-              </div>
-
-              <div className="right">
-                <div className="field email-field">
-                  <div className="input-field">
-                    <select value={id_region} onChange={(e) => setID_region(e.target.value)}>
-                      <option value="">Selecciona una Región</option>
-                      {options4}
-                    </select>
-                  </div>
-                  <span className="error email-error">
-                    <i className="bx bx-error-circle error-icon"></i>
-                    <p className="error-text">Please enter a valid email</p>
-                  </span>
-                </div>
-                <div className="field email-field">
-                  <div className="input-field">
-                    <select value={id_comuna} onChange={(e) => setID_comuna(e.target.value)}>
-                      <option value="">Selecciona una Comuna</option>
-                      {options5}
-                    </select>
-                  </div>
-                  <span className="error email-error">
-                    <i className="bx bx-error-circle error-icon"></i>
-                    <p className="error-text">Please enter a valid email</p>
-                  </span>
-                </div>
-                <div className="field email-field">
-                  <div className="input-field">
-                    <select value={id_ct} onChange={(e) => setId_ct(e.target.value)}>
-                      <option value="">Selecciona una Categoria</option>
-                      {options1}
-                    </select>
-                  </div>
-                  <span className="error email-error">
-                    <i className="bx bx-error-circle error-icon"></i>
-                    <p className="error-text">Please enter a valid email</p>
-                  </span>
-                </div>
-                <div className="field email-field">
-                  <div className="input-field">
-                    <select value={id_sb_ct} onChange={(e) => setId_Sb_Ct(e.target.value)}>
-                      <option value="">Selecciona una SubCategoria</option>
-                      {options2}
-                    </select>
-                  </div>
-                  <span className="error email-error">
-                    <i className="bx bx-error-circle error-icon"></i>
-                    <p className="error-text">Please enter a valid email</p>
-                  </span>
-                </div>
-                <div className="field email-field">
-                  <div className="input-field">
-                    <select value={id_dfct} onChange={(e) => setId_dfct(e.target.value)}>
-                      <option value="">Selecciona una Dificultad</option>
-                      {options3}
-                    </select>
-                  </div>
-                  <span className="error email-error">
-                    <i className="bx bx-error-circle error-icon"></i>
-                    <p className="error-text">Please enter a valid email</p>
-                  </span>
-                </div>
-              </div>
-            </div>
-            <div className="content-input">
-              <div className="field email-field">
-                <div className="input-field">
-                  <input type="text" name='titulo' placeholder='Titulo' onChange={(e) => setTitulo(e.target.value)} className="email"/>
-                </div>
-                <span className="error email-error">
-                  <i className="bx bx-error-circle error-icon"></i>
-                  <p className="error-text">Please enter a valid email</p>
-                </span>
-              </div>
-              <div className="field email-field">
-                <div className="input-field">
-                  <input type="textarea" name='descp1' placeholder='Descripción 1' onChange={(e) => setDesc1(e.target.value)} className=""/>
-                </div>
-                <span className="error email-error">
-                  <i className="bx bx-error-circle error-icon"></i>
-                  <p className="error-text">Please enter a valid email</p>
-                </span>
-              </div>
-              <div className="field email-field">
-                <div className="input-field">
-                  <input type="textarea" name='descp2' placeholder='Descripción 2' onChange={(e) => setDesc2(e.target.value)} className=""/>
-                </div>
-                <span className="error email-error">
-                  <i className="bx bx-error-circle error-icon"></i>
-                  <p className="error-text">Please enter a valid email</p>
-                </span>
-              </div>
-              <div className="field email-field">
-                <div className="input-field">
-                  <input type="textarea" name='descp3' placeholder='Descripción 3' onChange={(e) => setDesc3(e.target.value)} className=""/>
-                </div>
-                <span className="error email-error">
-                  <i className="bx bx-error-circle error-icon"></i>
-                  <p className="error-text">Please enter a valid email</p>
-                </span>
-              </div>
-              <div className="field email-field">
-                <div className="input-field">
-                  <input type="textarea" name='descp4' placeholder='Descripción 4' onChange={(e) => setDesc4(e.target.value)} className=""/>
-                </div>
-                <span className="error email-error">
-                  <i className="bx bx-error-circle error-icon"></i>
-                  <p className="error-text">Please enter a valid email</p>
-                </span>
-              </div>
-              <div className="field email-field">
-                <div className="input-field">
-                  <input type="textarea" name='descp5' placeholder='Descripción 5' onChange={(e) => setDesc5(e.target.value)} className=""/>
-                </div>
-                <span className="error email-error">
-                  <i className="bx bx-error-circle error-icon"></i>
-                  <p className="error-text">Please enter a valid email</p>
-                </span>
-              </div>
-              
-              
-            </div>
-            <div className="input-field button">
-              <input onClick={(e) => handleNewPost(e)} type="submit" value="Submit Now" />
-            </div>
-          </form>
+        <div className="public_nav">
+          <Slidenavuser />
         </div>
-      </section>
-      <script  src={ScriptForm}></script>
-    </div>
+        <section className="hero">
+          <div className="container-nw">
+            <form className="form" onSubmit={handleNewPost}>
+              <header>NewPost</header>
+                <div className="content-input">
+                  <div className="field email-field">
+                    <div className="input-field">
+                      <input type="text" name='titulo' placeholder='Titulo' onChange={(e) => setTitulo(e.target.value)} className="email"/>
+                    </div>
+                    <span className="error email-error">
+                      <i className="bx bx-error-circle error-icon"></i>
+                      <p className="error-text">Please enter a valid email</p>
+                    </span>
+                  </div>
+                  <div className="field email-field">
+                    <div className="input-field">
+                      <input type="textarea" name='descp1' placeholder='Descripción 1' onChange={(e) => setDesc1(e.target.value)} className=""/>
+                    </div>
+                    <span className="error email-error">
+                      <i className="bx bx-error-circle error-icon"></i>
+                      <p className="error-text">Please enter a valid email</p>
+                    </span>
+                  </div>
+                  <div className="field email-field">
+                    <div className="input-field">
+                      <input type="textarea" name='descp2' placeholder='Descripción 2' onChange={(e) => setDesc2(e.target.value)} className=""/>
+                    </div>
+                    <span className="error email-error">
+                      <i className="bx bx-error-circle error-icon"></i>
+                      <p className="error-text">Please enter a valid email</p>
+                    </span>
+                  </div>
+                  <div className="field email-field">
+                    <div className="input-field">
+                      <input type="textarea" name='descp3' placeholder='Descripción 3' onChange={(e) => setDesc3(e.target.value)} className=""/>
+                    </div>
+                    <span className="error email-error">
+                      <i className="bx bx-error-circle error-icon"></i>
+                      <p className="error-text">Please enter a valid email</p>
+                    </span>
+                  </div>
+                  <div className="field email-field">
+                    <div className="input-field">
+                      <input type="textarea" name='descp4' placeholder='Descripción 4' onChange={(e) => setDesc4(e.target.value)} className=""/>
+                    </div>
+                    <span className="error email-error">
+                      <i className="bx bx-error-circle error-icon"></i>
+                      <p className="error-text">Please enter a valid email</p>
+                    </span>
+                  </div>
+                  <div className="field email-field">
+                    <div className="input-field">
+                      <input type="textarea" name='descp5' placeholder='Descripción 5' onChange={(e) => setDesc5(e.target.value)} className=""/>
+                    </div>
+                    <span className="error email-error">
+                      <i className="bx bx-error-circle error-icon"></i>
+                      <p className="error-text">Please enter a valid email</p>
+                    </span>
+                  </div>
+              </div>
+              <div className="hero-content">
+                <div className="hero-select-map">
+                  <div className="left">
+                    <div className="field email-field">
+                      <div className="input-field">
+                        <select value={id_region} onChange={(e) => setID_region(e.target.value)}>
+                          <option value="">Selecciona una Región</option>
+                          {options4}
+                        </select>
+                      </div>
+                      <span className="error email-error">
+                        <i className="bx bx-error-circle error-icon"></i>
+                        <p className="error-text">Please enter a valid email</p>
+                      </span>
+                    </div>
+                    <div className="field email-field">
+                      <div className="input-field">
+                        <select value={id_comuna} onChange={(e) => setID_comuna(e.target.value)}>
+                          <option value="">Selecciona una Comuna</option>
+                          {options5}
+                        </select>
+                      </div>
+                      <span className="error email-error">
+                        <i className="bx bx-error-circle error-icon"></i>
+                        <p className="error-text">Please enter a valid email</p>
+                      </span>
+                    </div>
+                    <div className="field email-field">
+                      <div className="input-field">
+                        <select value={id_ct} onChange={(e) => setId_ct(e.target.value)}>
+                          <option value="">Selecciona una Categoria</option>
+                          {options1}
+                        </select>
+                      </div>
+                      <span className="error email-error">
+                        <i className="bx bx-error-circle error-icon"></i>
+                        <p className="error-text">Please enter a valid email</p>
+                      </span>
+                    </div>
+                    <div className="field email-field">
+                      <div className="input-field">
+                        <select value={id_sb_ct} onChange={(e) => setId_Sb_Ct(e.target.value)}>
+                          <option value="">Selecciona una SubCategoria</option>
+                          {options2}
+                        </select>
+                      </div>
+                      <span className="error email-error">
+                        <i className="bx bx-error-circle error-icon"></i>
+                        <p className="error-text">Please enter a valid email</p>
+                      </span>
+                    </div>
+                    <div className="field email-field">
+                      <div className="input-field">
+                        <select value={id_dfct} onChange={(e) => setId_dfct(e.target.value)}>
+                          <option value="">Selecciona una Dificultad</option>
+                          {options3}
+                        </select>
+                      </div>
+                      <span className="error email-error">
+                        <i className="bx bx-error-circle error-icon"></i>
+                        <p className="error-text">Please enter a valid email</p>
+                      </span>
+                    </div> 
+                  </div>
+                  <div className="right">
+                    <div className="map-input">
+                      <Map mapCnter={mapCenter} ClickCoord={handleClickCoord} />
+                      <div className="field email-field">
+                        <span className="error email-error">
+                          <i className="bx bx-error-circle error-icon"></i>
+                          <p className="error-text">Please enter a valid email</p>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="hero-input">
+                  <div className="field email-field">
+                    <div  >
+                      <DropFileInput onFileChange={(files) => onFileChange(files)} />
+                    </div>
+                    <span className="error email-error">
+                      <i className="bx bx-error-circle error-icon"></i>
+                      <p className="error-text">Please enter a valid email</p>
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div className="input-field button">
+                <input onClick={(e) => handleNewPost(e)} type="submit" value="Submit Now" />
+              </div>
+            </form>
+          </div>
+        </section>
+        <script  src={ScriptForm}></script>
+      </div>
     </div>
   )
 }
