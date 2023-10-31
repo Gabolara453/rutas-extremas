@@ -1,14 +1,24 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useState } from 'react';
+import LocationIcon from '../../assets/img/location.png'
 import { MapContainer, TileLayer, Marker, Popup, useMapEvents, FeatureGroup } from 'react-leaflet'
 import "leaflet/dist/leaflet.css";
 import L  from 'leaflet';
 import 'leaflet-draw/dist/leaflet.draw.css';
 import { EditControl } from 'react-leaflet-draw';
 
+const customIcon = new L.Icon({
+    iconUrl: LocationIcon,  // Ruta a tu imagen de ícono personalizado
+    iconSize: [20, 25],  // Tamaño del ícono
+    iconAnchor: [16, 32],  // Punto de anclaje del ícono
+    popupAnchor: [0, -32],  // Punto de anclaje del popup
+  });
 
 function Map({mapCnter, ClickCoord}) {
+
   
   const [clickedPosition, setClickedPosition] = useState(null);
+
+  
   
   const MapClickHandler = ({ onClick }) => {
     const map = useMapEvents({
@@ -21,14 +31,6 @@ function Map({mapCnter, ClickCoord}) {
     return null;
   };
 
-  // const handleCreated = (e) => {
-  //   const { layerType, layer } = e;
-  //   if (layerType === 'marker') {
-  //     const { lat, lng } = layer.getLatLng();
-  //     // setClickedPosition({ lat, lng });
-  //     // console.log(`Coordenadas seleccionadas: Latitud ${lat}, Longitud ${lng}`);
-  //   }
-  // };
 
   const handleMapClick = (e) => {
     const { lat, lng } = e.latlng;
@@ -55,19 +57,8 @@ function Map({mapCnter, ClickCoord}) {
               position='topright'
               // onCreated={handleCreated}
               draw={{
-                // polyline: {
-                //   icon: new L.DivIcon({
-                //     iconSize: new L.Point(8, 8),
-                //     className: "leaflet-div-icon leaflet-editing-icon"
-                //   }),
-                //   shapeOptions: {
-                //     guidelineDistance: 10,
-                //     color: "navy",
-                //     weight: 3
-                //   }
-                // },
                 marker: {
-                  icon: new L.Icon.Default(), // Use the default marker icon
+                  icon: customIcon, // Use the default marker icon
                 },
                 rectangle: false,
                 circle: false,
@@ -80,7 +71,8 @@ function Map({mapCnter, ClickCoord}) {
           
           <MapClickHandler onClick={handleMapClick} />
           {clickedPosition && (
-            <Marker position={[clickedPosition.lat, clickedPosition.lng]} >
+            <Marker position={[clickedPosition.lat, clickedPosition.lng]} icon={customIcon}>
+              
               <Popup>Coordenadas: {clickedPosition.lat}, {clickedPosition.lng}</Popup>
             </Marker>
           )}

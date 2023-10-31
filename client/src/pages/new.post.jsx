@@ -1,34 +1,40 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/authContext";
-import Map from "./component/map";
-import { getAllRegiones, getAllComId, getCoordRgns, getID_nwPost, getCtgs, getSbctgs, getDfct, nwPost } from "../context/auth.backend";
-import NavbarUser from "./component/navbar.Users";
+import Map from "./component/component-new-post/map";
+import { nwPost } from "../context/auth.backend";
+// import NavbarUser from "./component/navbar.Users";
+import LoaderPost from "./component/component-new-post/loader.post";
+import InputsPosts from "./component/component-new-post/inputs";
+import SelectInputs from "./component/component-new-post/select";
 import DropFileInput from "./component/input.images";
 import ScriptForm from "./assets/js/script.form"
 import "./css/newPost.css"
 import Slidenavuser from "./component/slidenavuser";
 
 export default function NewPost() {
+  const openLoeader = () => {
+        setLoeaderPost(true)
+    }
+
+    const closeLoader = () => {
+        setLoeaderPost(false)
+    }
 
   const navigate = useNavigate();
   const auth = useAuth();
   
-  const [status, setStatus] = useState();
+  // const [status, setStatus] = useState();
 
+  const [ loeaderPost, setLoeaderPost ] = useState(false)
   const [files, setFiles] = useState([]);
 
   const [fileUrls, setFileUrls] = useState([]);
-  const [id_post, setIDpost] = useState()
 
-  const [clickedPosition, setClickedPosition] = useState(null);
   const [mapCenter, setMapCenter] = useState([-35.426944, -71.665556]); // Coordenadas de Santiago, Chile
 
-  const [options1, setOptions1] = useState([]);
-  const [options2, setOptions2] = useState([]);
-  const [options3, setOptions3] = useState([]);
-  const [options4, setOptions4] = useState([]);
-  const [options5, setOptions5] = useState([]);
+  const [id_post, setIDpost] = useState()
+  
 
   const id = auth.id;
   const [id_ct, setId_ct] = useState();
@@ -50,134 +56,53 @@ export default function NewPost() {
   const [coordx, setCoordx] = useState();
   const [coordy, setCoordy] = useState();
 
-  useEffect(() => {
-    getAllRegiones()
-      .then((data) => {
+  
 
-        const arrayRg = data.response;
-        const mappedOptions = arrayRg.map((item) => (
-          <option key={item[0]} value={item[0]}>
-            {item[1]} {/* Ajusta esto según tus datos */}
-          </option>
-        ));
+  const handleInputChange = (valores) => {
+    setTitulo(valores.titulo);
+    setDesc1(valores.descp1);
+    setDesc2(valores.descp2);
+    setDesc3(valores.descp3);
+    setDesc4(valores.descp4);
+    setDesc5(valores.descp5);
+    // console.log(titulo,descp1,descp2,descp3,descp4,descp5)
+  }
 
-        setOptions4(mappedOptions);
-      })
-      .catch((error) => {
-        console.error('Error al obtener los datos del reg select:', error);
-      });
-    getCtgs()
-      .then((data) => {
+  const handleMapCenterChange = (valor) => {
+    setMapCenter(valor)
+  }
 
-        const arrayRg = data.response;
-        const mappedOptions = arrayRg.map((item) => (
-          <option key={item[0]} value={item[0]}>
-            {item[1]} {/* Ajusta esto según tus datos */}
-          </option>
-        ));
-
-        setOptions1(mappedOptions);
-      })
-      .catch((error) => {
-        console.error('Error al obtener los datos del cat select:', error);
-      });
-
-
-    getID_nwPost().then((data) => {
-        const id = data.response;
-        setIDpost(id);
-      })
-      .catch((error) => {
-        console.error('Error al obtener los datos del id post:', error);
-      });
-  }, []);
-
-  useEffect(() => {
-    if(!id_region) return;
-
-    getAllComId(id_region)
-      .then((data) => {
-        const arrayCm = data.response;
-        const mappedOptions = arrayCm.map((item) => (
-          <option key={item[0]} value={item[0]}>
-            {item[1]}
-          </option>
-        ));
-
-        setOptions5(mappedOptions);
-      })
-      .catch((error) => {
-        console.error('Error al obtener los datos del com select:', error);
-      });
-
-    getCoordRgns(id_region).then((data) => {
-      const ar_coords = data.response;
-      const coords = [ar_coords[0], ar_coords[1]];
-      console.log(coords)
-      setMapCenter(coords);
-    }).catch((error) => {
-        console.error('Error al obtener los datos de las coordenadas:', error);
-      });
-
-  }, [id_region]);
-
-  useEffect(() => {
-    if(!id_ct) return;
-
-    getSbctgs(id_ct)
-      .then((data) => {
-        const arrayCm = data.response;
-        const mappedOptions = arrayCm.map((item) => (
-          <option key={item[0]} value={item[0]}>
-            {item[1]}
-          </option>
-        ));
-
-        setOptions2(mappedOptions);
-      })
-      .catch((error) => {
-        console.error('Error al obtener los datos del sb_ct select:', error);
-      });
-
-    getDfct(id_ct)
-      .then((data) => {
-        const arrayCm = data.response;
-        const mappedOptions = arrayCm.map((item) => (
-          <option key={item[0]} value={item[0]}>
-            {item[1]}
-          </option>
-        ));
-
-        setOptions3(mappedOptions);
-      })
-      .catch((error) => {
-        console.error('Error al obtener los datos del dificutl select:', error);
-      });
-
-  }, [id_ct]);
+  const handleSelectChange = (valores) => {
+    // console.log(valores)
+    setIDpost( valores.id_post);
+    setId_ct(valores.id_ct);
+    setId_Sb_Ct(valores.id_sb_ct);
+    setId_dfct(valores.id_dfct);
+    setID_region(valores.id_region);
+    setID_comuna(valores.id_comuna);
+    // console.log(id_post, id_ct, id_sb_ct, id_dfct, id_region, id_comuna)
+  }
 
   const handleClickCoord = (valor) => {
-    setClickedPosition(valor);
     const { lat, lng } = valor;
     setCoordx(lat);
     setCoordy(lng);
     console.log("new_post_coord:", valor)
-    console.log(`Coordenadas seleccionadas: Latitud ${lat}, Longitud ${lng}`);
   }
 
   const onFileChange = async (files) => {
     console.log(files);
     setFiles(files); 
-    
   }
   
 
   const handleNewPost = async (event) => {
     event.preventDefault();
-    if(files) {
+    openLoeader()
+    if(files >= 5) {
       const result = await auth.setPostImages(files, id_post);
       setFileUrls(result)
-      if(fileUrls){
+      if(fileUrls >= 5){
         const [ url1, url2, url3, url4, url5 ] = fileUrls;
         setImg1(url1);
         setImg2(url2);
@@ -194,9 +119,11 @@ export default function NewPost() {
           img5, coordx, coordy)
           .then((data) => {
             if( data.success === true ) {
+              closeLoader()
               alert("Post Registrado Correctamente");
               navigate("/home");
             } else {
+              closeLoader()
               console.log(data)
               alert("Faltan campos por seleccionar y rellenar, vuelve a ingresarlos e intentalo de nuevo")
               // const arrayEr = 
@@ -211,8 +138,10 @@ export default function NewPost() {
             console.error('Error al obtener los datos del post:', error.data);
           });
       }else {
+        closeLoader()
         alert("Faltan Datos por ingresar");
       }
+      closeLoader()
     }else {
       alert("Faltan Datos por ingresar");
     }
@@ -228,128 +157,18 @@ export default function NewPost() {
           <Slidenavuser />
         </div>
         <section className="hero">
-          <div className="container-nw">
+          
+          { loeaderPost === true ? <LoaderPost  />
+          :<div className="container-nw">
             <form className="form" onSubmit={handleNewPost}>
               <header>NewPost</header>
                 <div className="content-input">
-                  <div className="field email-field">
-                    <div className="input-field">
-                      <input type="text" name='titulo' placeholder='Titulo' onChange={(e) => setTitulo(e.target.value)} className="email"/>
-                    </div>
-                    <span className="error email-error">
-                      <i className="bx bx-error-circle error-icon"></i>
-                      <p className="error-text">Please enter a valid email</p>
-                    </span>
-                  </div>
-                  <div className="field email-field">
-                    <div className="input-field">
-                      <input type="textarea" name='descp1' placeholder='Descripción 1' onChange={(e) => setDesc1(e.target.value)} className=""/>
-                    </div>
-                    <span className="error email-error">
-                      <i className="bx bx-error-circle error-icon"></i>
-                      <p className="error-text">Please enter a valid email</p>
-                    </span>
-                  </div>
-                  <div className="field email-field">
-                    <div className="input-field">
-                      <input type="textarea" name='descp2' placeholder='Descripción 2' onChange={(e) => setDesc2(e.target.value)} className=""/>
-                    </div>
-                    <span className="error email-error">
-                      <i className="bx bx-error-circle error-icon"></i>
-                      <p className="error-text">Please enter a valid email</p>
-                    </span>
-                  </div>
-                  <div className="field email-field">
-                    <div className="input-field">
-                      <input type="textarea" name='descp3' placeholder='Descripción 3' onChange={(e) => setDesc3(e.target.value)} className=""/>
-                    </div>
-                    <span className="error email-error">
-                      <i className="bx bx-error-circle error-icon"></i>
-                      <p className="error-text">Please enter a valid email</p>
-                    </span>
-                  </div>
-                  <div className="field email-field">
-                    <div className="input-field">
-                      <input type="textarea" name='descp4' placeholder='Descripción 4' onChange={(e) => setDesc4(e.target.value)} className=""/>
-                    </div>
-                    <span className="error email-error">
-                      <i className="bx bx-error-circle error-icon"></i>
-                      <p className="error-text">Please enter a valid email</p>
-                    </span>
-                  </div>
-                  <div className="field email-field">
-                    <div className="input-field">
-                      <input type="textarea" name='descp5' placeholder='Descripción 5' onChange={(e) => setDesc5(e.target.value)} className=""/>
-                    </div>
-                    <span className="error email-error">
-                      <i className="bx bx-error-circle error-icon"></i>
-                      <p className="error-text">Please enter a valid email</p>
-                    </span>
-                  </div>
-              </div>
+                  <InputsPosts onInputChange={handleInputChange} />
+                </div>
               <div className="hero-content">
                 <div className="hero-select-map">
                   <div className="left">
-                    <div className="field email-field">
-                      <div className="input-field">
-                        <select value={id_region} onChange={(e) => setID_region(e.target.value)}>
-                          <option value="">Selecciona una Región</option>
-                          {options4}
-                        </select>
-                      </div>
-                      <span className="error email-error">
-                        <i className="bx bx-error-circle error-icon"></i>
-                        <p className="error-text">Please enter a valid email</p>
-                      </span>
-                    </div>
-                    <div className="field email-field">
-                      <div className="input-field">
-                        <select value={id_comuna} onChange={(e) => setID_comuna(e.target.value)}>
-                          <option value="">Selecciona una Comuna</option>
-                          {options5}
-                        </select>
-                      </div>
-                      <span className="error email-error">
-                        <i className="bx bx-error-circle error-icon"></i>
-                        <p className="error-text">Please enter a valid email</p>
-                      </span>
-                    </div>
-                    <div className="field email-field">
-                      <div className="input-field">
-                        <select value={id_ct} onChange={(e) => setId_ct(e.target.value)}>
-                          <option value="">Selecciona una Categoria</option>
-                          {options1}
-                        </select>
-                      </div>
-                      <span className="error email-error">
-                        <i className="bx bx-error-circle error-icon"></i>
-                        <p className="error-text">Please enter a valid email</p>
-                      </span>
-                    </div>
-                    <div className="field email-field">
-                      <div className="input-field">
-                        <select value={id_sb_ct} onChange={(e) => setId_Sb_Ct(e.target.value)}>
-                          <option value="">Selecciona una SubCategoria</option>
-                          {options2}
-                        </select>
-                      </div>
-                      <span className="error email-error">
-                        <i className="bx bx-error-circle error-icon"></i>
-                        <p className="error-text">Please enter a valid email</p>
-                      </span>
-                    </div>
-                    <div className="field email-field">
-                      <div className="input-field">
-                        <select value={id_dfct} onChange={(e) => setId_dfct(e.target.value)}>
-                          <option value="">Selecciona una Dificultad</option>
-                          {options3}
-                        </select>
-                      </div>
-                      <span className="error email-error">
-                        <i className="bx bx-error-circle error-icon"></i>
-                        <p className="error-text">Please enter a valid email</p>
-                      </span>
-                    </div> 
+                    <SelectInputs  onMapCenterChange={handleMapCenterChange} onSelectChange={handleSelectChange}/>
                   </div>
                   <div className="right">
                     <div className="map-input">
@@ -380,6 +199,7 @@ export default function NewPost() {
               </div>
             </form>
           </div>
+          }
         </section>
         <script  src={ScriptForm}></script>
       </div>

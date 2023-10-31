@@ -10,6 +10,7 @@ const DropFileInput = props => {
 
     const wrapperRef = useRef(null);
 
+    // const [updatedList, setUpdateList] = useState([]);
     const [fileList, setFileList] = useState([]);
 
     const onDragEnter = () => wrapperRef.current.classList.add('dragover');
@@ -17,19 +18,30 @@ const DropFileInput = props => {
     const onDrop = () => wrapperRef.current.classList.remove('dragover');
 
     const onFileDrop = (e) => {
-        const newFile = e.target.files[0];
-        if (newFile) {
-            const updatedList = [...fileList, newFile];
-            setFileList(updatedList);
-            props.onFileChange(updatedList);
-        }
+      const newFile = e.target.files[0];
+      // const newFile2 = e.target.files[1];
+      // const newFile3 = e.target.files[2];
+      // const newFile4 = e.target.files[3];
+      // const newFile5 = e.target.files[4];
+      // if (newFile) {
+      //   for(let i = 0; i < newFile.length; i++){
+      //     setUpdateList([...fileList, newFile[i]])
+      //     setFileList(updatedList);
+      //     props.onFileChange(updatedList);
+      //   }
+      // }
+      if (newFile) {
+        const updatedList = [...fileList, newFile]
+        setFileList(updatedList);
+        props.onFileChange(updatedList);
+      }
     }
 
     const fileRemove = (file) => {
-        const updatedList = [...fileList];
-        updatedList.splice(fileList.indexOf(file), 1);
-        setFileList(updatedList);
-        props.onFileChange(updatedList);
+      const updatedList = [...fileList];
+      updatedList.splice(fileList.indexOf(file), 1);
+      setFileList(updatedList);
+      props.onFileChange(updatedList);
     }
 
     return (
