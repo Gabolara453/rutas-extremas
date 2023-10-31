@@ -70,7 +70,7 @@ export function Slidenavuser() {
             </button>
             </NavLink>
 
-            <NavLink to="/Profile">
+            <NavLink to="/user/profile">
             <button className="slidenav_button">
             <AccountCircleIcon />
             <span>Perfil</span>

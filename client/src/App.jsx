@@ -5,6 +5,7 @@ import HomeUsers from "./pages/home.users";
 import HomePublic from "./pages/home.public";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import "./App.css"
 
 function App() {
   const auth = useAuth();
