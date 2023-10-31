@@ -1,24 +1,16 @@
 .posts {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 
 .post {
-  margin-right: 30px;
+  display: flex;
+  flex-direction: column;
+  margin-right: 60px;
+  height: 550px;
+  width: 400px;
 }
-
 .post_img{
-    display: flex;
-    flex: column;
-    width: 20px;
-    height: 20px;
+  height: 400px;
+  width: 400px;
 }
-
-.h5 {
-    font-family: 'M PLUS Rounded 1c', sans-serif;
-    color: white;
-  }
-  .h6 {
-    font-family: 'M PLUS Rounded 1c', sans-serif;
-    color: white;
-  }

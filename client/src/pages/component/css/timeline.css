@@ -3,14 +3,15 @@
     flex-direction: row;
 }
 .timeline_left{
-    flex: 0.8;
+    flex: 1.2;
 }
 .timeline_right{
-    flex: 0.3
+    flex: 0.2;
 }
 
 .timeline-post {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  position: center;
 
 }

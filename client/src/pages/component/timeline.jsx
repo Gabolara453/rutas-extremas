@@ -1,19 +1,21 @@
 import React from 'react'
 import "./css/timeline.css"
 import Post from './post'
-import Suge from './suge';
+import Sugerencia from './sugerencia';
+
 
 function Timeline() {
   return (
     <div className="timeline">
       <div className="timeline_left">
        <div className="timeline-post">
-         <Post />
+       <Post />
+
         </div>
 
       </div>
       <div className="timeline_right">
-        <Suge/>
+        <Sugerencia/>
       </div>
 
     </div>

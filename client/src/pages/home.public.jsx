@@ -13,22 +13,7 @@ export function HomePublic() {
 
   // const navigate = useNavigate();
 
-  useEffect(() => {
-      get_Post().then(data => {
-        const arrayPost = data.response;
-        console.log(data.response)
-        const mappedPost = arrayPost.map((item) => (
-          <div className="div-post" key={item[0]}>
-            <NavLink to={`/Post/:${item[0]}`}>
-              <img className="img-post" src={item[12]} />
-              <h5>{item[3]}</h5>
-              <h6>{item[4]}</h6>
-            </NavLink>
-          </div>
-        ));
-        setPost(mappedPost)
-    })
-  }, [])
+
 
   
 
