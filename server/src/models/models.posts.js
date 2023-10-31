@@ -20,7 +20,19 @@ export async function get_Posts() {
   try{
     connection = await oracleDB.getConnection(connection_db);
     const response = await connection.execute(`
-        select P.id, P.titulo, D.dscp1, I.img1 from post P inner join images I on P.id_img = I.id inner join descripcion_post D on P.id_dscp_p = D.id
+        select P.id, C.nombre_categoria, SB.nombre_sb_ct, P.titulo, 
+          D.dscp1, D.dscp2, D.dscp3, D.dscp4, D.dscp5, 
+          DF.nombre_dificultad, R.nombre_region, C.nombre_comuna, 
+          I.img1, I.img2, I.img3, I.img4, I.img5, CD.coord_x, CD.coord_y 
+          from post P inner join categoria C on P.id_ctg = C.id
+          inner join sub_categoria SB on P.id_sb_ctg = SB.id
+          inner join dificultad DF on P.id_dificult = DF.id
+          inner join ubicacion_post UP on P.id_ubi_post = UP.id
+          inner join regiones R on UP.id_rgn_p = R.id 
+          inner join comunas C on UP.id_cma_p = C.id
+          inner join images I on P.id_img = I.id 
+          inner join descripcion_post D on P.id_dscp_p = D.id
+          inner join coordenates CD on P.id_cdts = CD.id
     `);
     const result = response.rows;
     return result;

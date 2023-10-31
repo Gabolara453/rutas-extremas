@@ -20,9 +20,9 @@ export function HomePublic() {
         const mappedPost = arrayPost.map((item) => (
           <div className="div-post" key={item[0]}>
             <NavLink to={`/Post/:${item[0]}`}>
-              <img className="img-post" src={item[3]} />
-              <h5>{item[1]}</h5>
-              <h6>{item[2]}</h6>
+              <img className="img-post" src={item[12]} />
+              <h5>{item[3]}</h5>
+              <h6>{item[4]}</h6>
             </NavLink>
           </div>
         ));

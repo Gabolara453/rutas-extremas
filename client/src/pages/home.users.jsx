@@ -25,8 +25,8 @@ export function HomeUsers() {
         const mappedPost = arrayPost.map((item) => (
           <div className="div-post" key={item[0]}>
             <NavLink to={`/Post/:${item[0]}`}>
-              <img className="img-post" src={item[3]} />
-              <h5 className="h5">{item[1]}</h5>
+              <img className="img-post" src={item[12]} />
+              <h5 className="h5">{item[3]}</h5>
               
             </NavLink>
           </div>

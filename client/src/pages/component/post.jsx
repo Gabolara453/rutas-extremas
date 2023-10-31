@@ -21,7 +21,7 @@ function Post() {
             </div>
             <MoreHorizIcon/>
           <div className="post_img">
-            <img src={item[3]}/>
+            <img src={item[12]}/>
           </div>
         
           <div className=".post_footer"></div>
