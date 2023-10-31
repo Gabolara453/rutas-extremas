@@ -6,35 +6,35 @@ import { get_Post } from '../../context/auth.backend';
 
 
 function Post() {
-  const [titulo, setPost1] = useState();
-  const [imagen, setPost] = useState();
+  const [post, setPost] = useState();
+
   useEffect(() => {
     get_Post().then(data => {
-      console.log(data.response)
+      // console.log(data.response)
+      const arrayPost = data.response;
+      const mappedPost = arrayPost.map((item) => (
+        <div className='post'>
+          <div className=".post_header"></div>
+            <div className="post_headerAutor">
+              <Avatar>R</Avatar>
+              redian_ <span>12h</span> 
+            </div>
+            <MoreHorizIcon/>
+          <div className="post_img">
+            <img src={item[3]}/>
+          </div>
+        
+          <div className=".post_footer"></div>
+        </div>
+      ));
+      setPost(mappedPost);
       
-      setPost1(data.response[1])
-      setPost(data.response[3])
-      //setPost(mappedPost)
-  })
-}, [])
+    })
+    // console.log(imagen)
+  }, [])
   return (
-    <div className='post'>
-      <div className=".post_header"></div>
-      <div className="post_headerAutor">
-        <Avatar>R</Avatar>
-        redian_ <span>12h</span> 
-      </div>
-      <MoreHorizIcon/>
-    <div className="post_img">
-    <img src= " ">
-    
-    </img>
-
-
-
-    </div>
-  
-    <div className=".post_footer"></div>
+    <div className='posts'>
+      {post}
     </div>
   )
 }

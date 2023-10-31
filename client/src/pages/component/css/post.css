@@ -1,8 +1,17 @@
+.posts {
+  display: flex;
+  flex-direction: row;
+}
+
+.post {
+  margin-right: 30px;
+}
+
 .post_img{
     display: flex;
     flex: column;
-    width: 20%;
-    height: 20%;
+    width: 20px;
+    height: 20px;
 }
 
 .h5 {

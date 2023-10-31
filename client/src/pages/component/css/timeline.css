@@ -8,3 +8,9 @@
 .timeline_right{
     flex: 0.3
 }
+
+.timeline-post {
+  display: flex;
+  flex-direction: row;
+
+}

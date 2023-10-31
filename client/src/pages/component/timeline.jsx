@@ -7,22 +7,15 @@ function Timeline() {
   return (
     <div className="timeline">
       <div className="timeline_left">
-       <div className="timeline_post">
+       <div className="timeline-post">
          <Post />
-         <Post />
-         <Post />
-
         </div>
 
       </div>
       <div className="timeline_right">
         <Suge/>
-
-
       </div>
 
-
-      
     </div>
   );
 }
