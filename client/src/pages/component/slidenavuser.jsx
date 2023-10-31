@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate, NavLink, HashRouter } from "react-router-dom";
 import { useAuth } from "../../context/authContext";
-import imgLogo from "../../img/l7.jpg"
+import imgLogo from "../assets/img/l7.jpg"
 import './css/slidenav.css'
-import Hamburger from '../../img/showNv.png'
+import Hamburger from '../assets/img/t.png'
 import HomeIcon from "@mui/icons-material/Home";
 import SearchIcon from "@mui/icons-material/Search";
 import ExploreIcon from "@mui/icons-material/Explore";

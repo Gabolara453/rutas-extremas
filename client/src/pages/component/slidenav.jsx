@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, NavLink } from "react-router-dom";
 import { useAuth } from "../../context/authContext";
-import imgLogo from "../../img/l7.jpg"
+import imgLogo from "../assets/img/l7.jpg"
 import "./css/slidenav.css"
 import HomeIcon from "@mui/icons-material/Home";
 import SearchIcon from "@mui/icons-material/Search";

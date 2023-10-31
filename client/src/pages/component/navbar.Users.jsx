@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate, NavLink, HashRouter } from "react-router-dom";
 import { useAuth } from "../../context/authContext";
-import imgLogo from "../../img/l7.jpg"
+import imgLogo from "../assets/img/l7.jpg"
 import './css/navbar.css'
-import Hamburger from '../../img/showNv.png'
+import Hamburger from '../assets/img/t.png'
 // import { ReactComponent as Hamburger } from '../../img/showNv.png'
 // import { ReactComponent as Brand } from '../../assets/icons/logo.svg'
 

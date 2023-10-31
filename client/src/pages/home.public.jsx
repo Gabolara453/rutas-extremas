@@ -5,7 +5,6 @@ import { get_Post } from "../context/auth.backend";
 //import NavbarPublic from "./component/navbar.Public";
 import Slidenav from "./component/slidenav";
 import Timeline from "./component/timeline";
-import "../homie.css";
 
 
 export function HomePublic() {

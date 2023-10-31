@@ -1,4 +1,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@1,900&display=swap');
+html{
+  background-image: url(../assets/img/fondos/5.jpg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 100% 100%;
+  background-attachment: fixed;
+}
+
+.public{
+    display: flex;
+    flex-direction: row;
+}
+.public_nav{
+    flex: 0.2
+}
+.public_time{
+    flex: 0.7
+}
+.hero{
+    flex: 0.7
+}
 
 .section-container {
   max-width: 1280px;
