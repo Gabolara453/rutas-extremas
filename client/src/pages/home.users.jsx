@@ -10,6 +10,7 @@ import { get_Post } from "../context/auth.backend";
 
 export function HomeUsers() {
   const auth = useAuth() 
+
   
   const navigate = useNavigate();
   const [posts, setPost] = useState([]);
