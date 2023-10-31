@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@1,900&display=swap');
+
 .section-container {
   max-width: 1280px;
   margin: 0 auto;
@@ -16,6 +18,7 @@
 }
 
 .div-post {
+  font-family: 'M PLUS Rounded 1c', sans-serif;
   border: solid 1px #eee;
   box-shadow: 0 5px 5px rgb(0, 0, 0, 0.2);
   width: 30%;
@@ -28,3 +31,16 @@
   flex: row;
   justify-content: space-between;
 }
+
+.h5 {
+  font-family: 'Raleway', sans-serif;
+  color: white;
+  font-size: 130%;
+  background-color: #000000; /* Color de fondo del contenedor */
+  padding: 10px;
+  background-color: rgba(16, 171, 39, 0.805);
+  border-radius: 10px;
+}
+
+
+

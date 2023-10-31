@@ -4,12 +4,10 @@ import "./css/home.css"
 import { useAuth } from "../context/authContext";
 import NavbarUser from "./component/navbar.Users";
 import { get_Post } from "../context/auth.backend";
-import Timeline from "./component/timeline";
-import Slidenavuser from "./component/slidenavuser";
-import "../homie.css"
+
 
 export function HomeUsers() {
-  const auth = useAuth()
+  const auth = useAuth() 
   
   const navigate = useNavigate();
   const [posts, setPost] = useState([]);
@@ -26,8 +24,8 @@ export function HomeUsers() {
           <div className="div-post" key={item[0]}>
             <NavLink to={`/Post/:${item[0]}`}>
               <img className="img-post" src={item[3]} />
-              <h5>{item[1]}</h5>
-              <h6>{item[2]}</h6>
+              <h5 className="h5">{item[1]}</h5>
+              
             </NavLink>
           </div>
         ));
@@ -37,24 +35,13 @@ export function HomeUsers() {
   
   return (
     <>
-
+      <NavbarUser />
       <h1></h1>
-      <section>
-      <div className="public">
-      <div className="public_nav">
-        <Slidenavuser />
+      <div>
+        <div className="div-posts section-container"> 
+          {posts}
+        </div>      
       </div>
-      <div className="public_time">
-        <Timeline />
-          <h1>
-          
-          </h1>
-          <div className="div-posts section-container"> 
-            {posts}
-          </div>
-      </div>
-      </div>
-      </section>
       
     </>
     
