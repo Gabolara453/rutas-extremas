@@ -10,7 +10,7 @@ import {
   signOut,
   onAuthStateChanged
 } from "firebase/auth";
-import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import { getDownloadURL, ref, listAll, deleteObject, uploadBytes } from "firebase/storage";
 
 
 export const authContext = createContext();
@@ -101,15 +101,7 @@ export function AuthProvider ({children}) {
     console.log(response);
   };
 
-  // const setPostImages = async (uid, img, file) => {
-  //   try{
-  //     const imageRef = ref(storage, `images/${uid}/${img}`);
-  //     const resUpload = await uploadBytes(imageRef, file);
-  //     return resUpload;
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }
+  
   const setPostImages = async (imageList, id) => {
     try{
       const urls = [];
@@ -131,18 +123,31 @@ export function AuthProvider ({children}) {
       console.error(error);
     }
   }
-  const getUrlImages = async (path) => {
-    try {
-      const imageRef = ref(storage, path);
-      const url = await getDownloadURL(imageRef);
-      return url;
-    } catch (error) {
-      console.error(error)
+
+  const elimanarCarpetaID = async (id) => {
+    const imageUrls = await getUrlImages(id);
+
+    for (const { url, name } of imageUrls) {
+      const imageRef = ref(storage, `images/${id}/${name}`);
+      await deleteObject(imageRef);
     }
   }
 
+  const getUrlImages = async (id) => {
+    const folderRef = ref(storage, `images/${id}`);
+    const imageUrls = [];
+
+    const items = await listAll(folderRef);
+    for (const item of items.items) {
+      const imageUrl = await getDownloadURL(item);
+      imageUrls.push({ url: imageUrl, name: item.name });
+    }
+
+    return imageUrls;
+  }
+
   return ( 
-    <authContext.Provider value={{ registerWithGoogle, logout, setPostImages, getUrlImages, state, user, id, userName, email, phto, accesstkn }}>
+    <authContext.Provider value={{ registerWithGoogle, logout, setPostImages, getUrlImages, elimanarCarpetaID, state, user, id, userName, email, phto, accesstkn }}>
       { children }
     </authContext.Provider>
   )

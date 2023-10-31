@@ -13,7 +13,7 @@ function Post() {
       // console.log(data.response)
       const arrayPost = data.response;
       const mappedPost = arrayPost.map((item) => (
-        <div className='post'>
+        <div className='post' key={item[0]}>
           <div className="post_header"></div>
             <div className="post_headerAutor">
               <Avatar>R</Avatar>

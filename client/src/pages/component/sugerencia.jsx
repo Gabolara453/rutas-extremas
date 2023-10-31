@@ -13,8 +13,8 @@ function Sugerencia() {
       // console.log(data.response)
       const arrayPost = data.response;
       const mappedPost = arrayPost.map((item) => (
-        <div className="suge">
-        <h1>Segurencias</h1>
+        <div className="suge" key={item[0]}>
+          <h1>Segurencias</h1>
           <div className=".suge_header"></div>
             <div className="suge_headerAutor">
               <Avatar>R</Avatar>

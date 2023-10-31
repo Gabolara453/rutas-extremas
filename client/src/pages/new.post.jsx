@@ -99,10 +99,11 @@ export default function NewPost() {
   const handleNewPost = async (event) => {
     event.preventDefault();
     openLoeader()
-    if(files >= 5) {
+    if(files.length >= 4) {
       const result = await auth.setPostImages(files, id_post);
       setFileUrls(result)
-      if(fileUrls >= 5){
+      console.log("newPost: ",fileUrls)
+      if(fileUrls.length >= 4){
         const [ url1, url2, url3, url4, url5 ] = fileUrls;
         setImg1(url1);
         setImg2(url2);
@@ -123,6 +124,7 @@ export default function NewPost() {
               alert("Post Registrado Correctamente");
               navigate("/home");
             } else {
+              auth.elimanarCarpetaID(id_post);
               closeLoader()
               console.log(data)
               alert("Faltan campos por seleccionar y rellenar, vuelve a ingresarlos e intentalo de nuevo")
@@ -132,17 +134,22 @@ export default function NewPost() {
               //   alert(`${item.msg} in ${item.path}`)
               // })
               // alert(arrayEr)
-              navigate("/user/newPost")
+              // navigate("/user/newPost")
             }
           }).catch((error) => {
+            auth.elimanarCarpetaID(id_post);
             console.error('Error al obtener los datos del post:', error.data);
           });
       }else {
+        await auth.elimanarCarpetaID(id_post)
         closeLoader()
         alert("Faltan Datos por ingresar");
       }
-      closeLoader()
     }else {
+      closeLoader()
+      console.log(id, id_ct, id_sb_ct, titulo, descp1, descp2, descp3, descp4, 
+          descp5, id_dfct, id_region, id_comuna, img1, img2, img3, img4, 
+          img5, coordx, coordy)
       alert("Faltan Datos por ingresar");
     }
     
