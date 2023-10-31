@@ -4,20 +4,30 @@
 
 .user-profile {
     font-family: 'M PLUS Rounded 1c', sans-serif;
-    padding: 200px;
-    max-width: 900px;
+    padding: 300px;
+    max-width: 1500px;
     max-height: 900px;
-    margin-top: 10px auto;
     text-align: center;
     box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.2);
+
   }
   
   .user-image {
     float: left;
-    width: 150px;
-    height: 150px;
+    width: 250px;
+    height: 250px;
     border-radius: 50%;
     object-fit: cover;
     margin-bottom: 10px;
   }
   
+
+
+
+
+
+
+
+
+
+
