@@ -14,7 +14,7 @@ function Post() {
       const arrayPost = data.response;
       const mappedPost = arrayPost.map((item) => (
         <div className='post'>
-          <div className=".post_header"></div>
+          <div className="post_header"></div>
             <div className="post_headerAutor">
               <Avatar>R</Avatar>
               redian_ <span>12h</span> 
@@ -24,7 +24,7 @@ function Post() {
             <img src={item[12]}/>
           </div>
         
-          <div className=".post_footer"></div>
+          <div className="post_footer"></div>
         </div>
       ));
       setPost(mappedPost);
