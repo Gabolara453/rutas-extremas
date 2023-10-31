@@ -36,7 +36,7 @@ export function Slidenavuser() {
         
         <div className="slidenav">
         <img
-        className="logo" src={imgLogo}/>
+        className="logo" src={phtURL}/>
        
         <div className="slidenav_buttons">
     

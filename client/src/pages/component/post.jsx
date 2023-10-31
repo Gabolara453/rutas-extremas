@@ -19,11 +19,11 @@ function Post() {
               <Avatar>R</Avatar>
               redian_ <span>12h</span> 
             </div>
+            <div className="post_img">
+              <img src={item[12]}/>
+            </div>
             <MoreHorizIcon/>
-          <div className="post_img">
-            <img src={item[12]}/>
-          </div>
-        
+          
           <div className="post_footer"></div>
         </div>
       ));
