@@ -10,6 +10,7 @@ function Timeline() {
       <div className="timeline_left">
        <div className="timeline-post">
        <Post />
+       <br></br>
 
         </div>
 
