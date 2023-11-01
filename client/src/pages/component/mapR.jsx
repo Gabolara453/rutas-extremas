@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import './css/inputImages.css';
+// import './css/inputImages.css';
 import { MdCloudUpload, MdDelete } from 'react-icons/md'
 import { AiFillFileImage } from 'react-icons/ai'
 import ScriptImages from '../assets/js/script.images'

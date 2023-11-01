@@ -7,7 +7,7 @@ import { nwPost } from "../context/auth.backend";
 import LoaderPost from "./component/component-new-post/loader.post";
 import InputsPosts from "./component/component-new-post/inputs";
 import SelectInputs from "./component/component-new-post/select";
-import DropFileInput from "./component/input.images";
+import DropFileInput from "./component/component-new-post/input.images";
 import ScriptForm from "./assets/js/script.form"
 import "./css/newPost.css"
 import Slidenavuser from "./component/slidenavuser";

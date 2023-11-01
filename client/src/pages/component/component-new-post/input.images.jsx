@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 
 import './css/input.images.css';
 
-import { ImageConfig } from '../assets/js/images.config'; 
-import uploadImg from '../assets/img/cloud-upload-regular-240.png';
+import { ImageConfig } from '../../assets/js/images.config'; 
+import uploadImg from '../../assets/img/cloud-upload-regular-240.png';
 
 const DropFileInput = props => {
 
