@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Red+Hat+Mono:ital,wght@1,500&display=swap');
 
 .slidenav{
-  top: 120px;
+  top: 130px;
   left: 10px;
   width: 200px;
   position: fixed;
@@ -23,7 +23,7 @@
 .div-user {
   margin-top: 10px;
   margin-left: 10px;
-  height: 220px;
+  height: 130px;
   display: flex;
   flex-direction: column;
   align-items: center;
