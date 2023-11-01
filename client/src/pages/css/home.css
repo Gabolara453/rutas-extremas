@@ -7,19 +7,48 @@ html{
   background-attachment: fixed;
 }
 
+.header {
+  top: 0;
+  left: 0;
+  position: fixed ;
+  width: 100%;
+  height: 110px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 100;
+}
+
+.logo-tittle-name {
+  margin-top: 40px;
+  position: relative;
+  width: 370px;
+  height: 120px;
+  
+}
+
+.logo-tittle-name img {
+  width: 100%;
+  border: 5px;
+  border-radius: 15px;
+}
+
 .public{
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 .public_nav{
-    flex: 0.2
+  flex: 0.2
 }
 .public_time{
-    flex: 0.7
+  flex: 0.7
 }
 .hero{
-    flex: 0.7
+  flex: 0.7
 }
+
+
 
 .section-container {
   max-width: 1280px;

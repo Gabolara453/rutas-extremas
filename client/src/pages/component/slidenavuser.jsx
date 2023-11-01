@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate, NavLink, HashRouter } from "react-router-dom";
 import { useAuth } from "../../context/authContext";
-import imgLogo from "../assets/img/l7.jpg"
+// import imgLogo from "../assets/img/l7.jpg"
 import './css/slidenav.css'
-import Hamburger from '../assets/img/t.png'
+// import Hamburger from '../assets/img/t.png'
 import HomeIcon from "@mui/icons-material/Home";
 import SearchIcon from "@mui/icons-material/Search";
 import ExploreIcon from "@mui/icons-material/Explore";
@@ -19,7 +19,7 @@ export function Slidenavuser() {
     
     const navigate = useNavigate();
   
-    // const displyNme = auth.userName;
+    const displyNme = auth.userName;
     const phtURL = auth.phto;
   
     const [showNavbar, setShowNavbar] = useState(false)
@@ -34,17 +34,19 @@ export function Slidenavuser() {
     }
     return (
         
-        <div className="slidenav">
-        <img
-        className="logo" src={phtURL}/>
+      <div className="slidenav">
+        <div className="div-user">
+          <img className="slidenav_logo" src={phtURL}/>
+          <h2>{displyNme}</h2>
+        </div>
        
         <div className="slidenav_buttons">
     
             <NavLink to="/home">
-            <button className="slidenav_button">
-            <HomeIcon />
-            <span>Home</span>
-            </button>
+              <button className="slidenav_button">
+                <HomeIcon />
+                <span>Home</span>
+              </button>
             </NavLink>
     
             <button className="slidenav_button">
@@ -57,29 +59,29 @@ export function Slidenavuser() {
             </button>
 
             <NavLink to="/user/newPost">
-            <button className="slidenav_button">
-            <AddCircleIcon />
-            <span>Crear</span>
-            </button>
+              <button className="slidenav_button">
+                <AddCircleIcon />
+                <span>Crear</span>
+              </button>
             </NavLink>
     
             <NavLink to="/map">
-            <button className="slidenav_button">
-            <MapIcon />
-            <span>Mapa</span>
-            </button>
+              <button className="slidenav_button">
+                <MapIcon />
+                <span>Mapa</span>
+              </button>
             </NavLink>
 
             <NavLink to="/user/profile">
-            <button className="slidenav_button">
-            <AccountCircleIcon />
-            <span>Perfil</span>
-            </button>
+              <button className="slidenav_button">
+                <AccountCircleIcon />
+                <span>Perfil</span>
+              </button>
             </NavLink>
     
             <button className="slidenav_button" onClick={() => handleLogout()}>
-                <LogoutIcon />
-                <span>Logout</span>
+              <LogoutIcon />
+              <span>Logout</span>
             </button>
         </div>
     

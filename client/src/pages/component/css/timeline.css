@@ -1,6 +1,10 @@
-.timeline{
-    display: flex;
-    flex-direction: row;
+.timeline{ 
+  position: relative;
+  top: 120px;
+  left: 10px;
+  display: flex;
+  flex-direction: row;
+  width: 1000px;
 }
 .timeline_left{
     flex: 1.2;
@@ -12,6 +16,4 @@
 .timeline-post {
   display: flex;
   flex-direction: column;
-  position: center;
-
 }

@@ -1,4 +1,6 @@
 .posts {
+  margin-top: 20px;
+  margin-left: 100px;
   display: flex;
   flex-direction: column;
 }

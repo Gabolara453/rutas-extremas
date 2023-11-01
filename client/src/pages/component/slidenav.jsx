@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, NavLink } from "react-router-dom";
 import { useAuth } from "../../context/authContext";
-import imgLogo from "../assets/img/l7.jpg"
+import LogoNoAccount from "../assets/img/pngegg.png"
 import "./css/slidenav.css"
 import HomeIcon from "@mui/icons-material/Home";
 import SearchIcon from "@mui/icons-material/Search";
@@ -21,16 +21,18 @@ function Slidenav() {
   }
   return( 
   <div className="slidenav">
-    <img
-    className="logo" src={imgLogo}/>
+    <div className="div-no-user">
+      <img className="slidenav_logo" src={LogoNoAccount}/>
+    </div>
+
    
     <div className="slidenav_buttons">
 
       <NavLink to="/home">
-      <button className="slidenav_button">
-      <HomeIcon />
-      <span>Home</span>
-      </button>
+        <button className="slidenav_button">
+          <HomeIcon />
+          <span>Home</span>
+        </button>
       </NavLink>
 
       <button className="slidenav_button">
@@ -43,10 +45,10 @@ function Slidenav() {
       </button>
 
       <NavLink to="/map">
-      <button className="slidenav_button">
-      <MapIcon />
-      <span>Mapa</span>
-      </button>
+        <button className="slidenav_button">
+          <MapIcon />
+          <span>Mapa</span>
+        </button>
       </NavLink>
 
       <button className="slidenav_button" onClick={(e) => handleRegisterWithGoogle(e)}>
@@ -54,7 +56,6 @@ function Slidenav() {
         <span>Login</span>
       </button>
     </div>
-
   </div>
   );
     
