@@ -1,12 +1,16 @@
 .suge {
-    position: fixed;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    z-index: 1;
-    margin-right: 30px;
-    height: 300px;
-    width: 100px;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: 1;
+  margin-right: 30px;
+  height: 300px;
+  width: 210px;
+  padding: 25px;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
 }
 .suge_img{
     height: 200px;

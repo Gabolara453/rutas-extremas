@@ -14,26 +14,34 @@ function Post() {
       const arrayPost = data.response;
       const mappedPost = arrayPost.map((item) => (
         <div className='post' key={item[0]}>
-          <div className="post_header"></div>
-            <div className="post_headerAutor">
+          <div className="post-header">
+            <div className="post-headerAutor">
               <Avatar>R</Avatar>
-              redian_ <span>12h</span> 
+              <h3>redian_</h3> 
             </div>
-          <div className="post_img">
-
-           <NavLink to={`/Post/:${item[0]}`}>
-              <img className="img-post" src={item[12]} />
-              </NavLink>
+            <div className='time-post'>
+              <span>12h</span> 
+            </div>
           </div>
-        
-          <div className=".post_footer">
-            <NavLink>
-              <h5 className="h5">{item[3]}</h5>
-              
-            </NavLink>
-            
+          <div className='post-hero'>
+            <div className='post-left'>
+              <div className="post-img">
+                <NavLink to={`/Post/:${item[0]}`}>
+                  <img className="img-post" src={item[12]} />
+                </NavLink>
+              </div>
+            </div>
+            <div className='post-right'>
+              <div className="post-footer">
+                <NavLink>
+                  <h5 className="h5">{item[3]}</h5>
+                </NavLink>
+              </div>
+            </div>
           </div>
-          
+          <div>
+            <h4>comentarios</h4>
+          </div>
         </div>
       ));
       setPost(mappedPost);
