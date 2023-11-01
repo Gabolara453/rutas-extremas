@@ -6,7 +6,7 @@ import LogoImageName from "./assets/img/logo-nombre.jpg"
 import NavbarSearch from "./component/navbar.search";
 import Timeline from "./component/timeline";
 import Slidenavuser from "./component/slidenavuser";
-// import { get_Post } from "../context/auth.backend";
+import Footer from "./component/footer";
 
 
 export function HomeUsers() {
@@ -45,9 +45,9 @@ export function HomeUsers() {
                 {/*posts*/}
               </div>
           </div>
-
         </div>
-      </section>
+      </section>      
+      <Footer />
     </>
     
   )

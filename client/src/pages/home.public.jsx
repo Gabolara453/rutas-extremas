@@ -5,6 +5,7 @@ import LogoImageName from "./assets/img/logo-nombre.jpg"
 import NavbarSearch from "./component/navbar.search";
 import Slidenav from "./component/slidenav";
 import Timeline from "./component/timeline";
+import Footer from "./component/footer";
 
 
 export function HomePublic() {
@@ -42,11 +43,9 @@ export function HomePublic() {
               {posts}
             </div>
           </div>    
-
         </div>
       </section>
-
-      
+      <Footer />
     </div>
 
   )

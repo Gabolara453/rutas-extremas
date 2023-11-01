@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Julius+Sans+One&display=swap');
+/* Estilos para el pie de página */
+.footer {
+  position: relative;
+  left: 0px;
+  bottom: 0px;
+  width: 100%;
+  background-image: url('../../assets/img/fondo1.png');
+  font-family: 'Julius Sans One', sans-serif;
+  font-size: 30px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white;
+  height: 100px;
+  text-align: center;
+}
+
+.footer-content {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1500px;
+  margin: 30px 0px 180px 100px;
+  padding: 0 20px;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+}
+
+.footer-logo img {
+  width: 80px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+.footer h1 {
+  font-size: 1.5rem;
+}
+
+.footer-links a {
+  color: #000000;
+  text-decoration: none;
+  margin-right: 200px;
+  font-weight: 800;
+}
+
+.footer-social a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 24px;
+  margin-right: 15px;
+}
+
+/* Agrega estilos adicionales según tus preferencias */
+
+
+
+/* Agrega estilos adicionales según tus preferencias */ 
+

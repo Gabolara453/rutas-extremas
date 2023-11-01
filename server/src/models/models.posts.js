@@ -19,7 +19,8 @@ const closeConnection = async ()  => {
 export async function get_Posts() {
   try{
     connection = await oracleDB.getConnection(connection_db);
-    const response = await connection.execute(`
+    const response = await connection.execute(
+      `
         select P.id, C.nombre_categoria, SB.nombre_sb_ct, P.titulo, 
           D.dscp1, D.dscp2, D.dscp3, D.dscp4, D.dscp5, 
           DF.nombre_dificultad, R.nombre_region, C.nombre_comuna, 
@@ -33,7 +34,8 @@ export async function get_Posts() {
           inner join images I on P.id_img = I.id 
           inner join descripcion_post D on P.id_dscp_p = D.id
           inner join coordenates CD on P.id_cdts = CD.id
-    `);
+      `
+    );
     const result = response.rows;
     return result;
   } catch (error) {
