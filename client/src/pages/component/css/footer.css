@@ -4,7 +4,8 @@
   position: relative;
   left: 0px;
   bottom: 0px;
-  width: 100%;
+  width: 1300px;
+  height: 100px;
   background-image: url('../../assets/img/fondo1.png');
   font-family: 'Julius Sans One', sans-serif;
   font-size: 30px;
@@ -12,7 +13,6 @@
   background-position: center;
   background-repeat: no-repeat;
   color: white;
-  height: 100px;
   text-align: center;
 }
 
