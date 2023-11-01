@@ -16,3 +16,9 @@
   height: 400px;
   width: 400px;
 }
+
+.post_headerAutor{
+  display: flex;
+  margin: left;
+}
+

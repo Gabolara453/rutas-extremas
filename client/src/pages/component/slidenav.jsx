@@ -39,6 +39,7 @@ function Slidenav() {
         <SearchIcon />
         <span>Buscar</span>
       </button>
+      
       <button className="slidenav_button">
         <ExploreIcon />
         <span>Explorar</span>

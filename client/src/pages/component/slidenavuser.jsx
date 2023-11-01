@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate, NavLink, HashRouter } from "react-router-dom";
 import { useAuth } from "../../context/authContext";
 // import imgLogo from "../assets/img/l7.jpg"
@@ -13,15 +13,28 @@ import AddCircleIcon from '@mui/icons-material/AddCircle';
 import LogoutIcon from '@mui/icons-material/Logout';
 import MapIcon from '@mui/icons-material/Map';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import { infoUser } from "../../context/auth.backend";
 
 export function Slidenavuser() {
     const auth = useAuth()
     
     const navigate = useNavigate();
-  
+
+    const id = auth.id;
     const displyNme = auth.userName;
     const phtURL = auth.phto;
-  
+    const [User, setUser] = useState()
+
+    useEffect(()=>{
+      if(!id) return;
+
+      infoUser(id).then((data)=>{
+        const arrayUser = data.response;
+        setUser(arrayUser)
+      }) 
+    },[id])
+    
+
     const [showNavbar, setShowNavbar] = useState(false)
   
     const handleShowNavbar = () => {
@@ -37,7 +50,7 @@ export function Slidenavuser() {
       <div className="slidenav">
         <div className="div-user">
           <img className="slidenav_logo" src={phtURL}/>
-          <h2>{displyNme}</h2>
+      
         </div>
        
         <div className="slidenav_buttons">
