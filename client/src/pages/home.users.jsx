@@ -7,21 +7,17 @@ import NavbarSearch from "./component/navbar.search";
 import Timeline from "./component/timeline";
 import Slidenavuser from "./component/slidenavuser";
 import Footer from "./component/footer";
+import { useAuth } from "../context/authContext";
+import { infoUser } from "../context/auth.backend";
 
 
 export function HomeUsers() {
-  // const auth = useAuth() 
-  //
-  // 
-  // const navigate = useNavigate();
-  // const [posts, setPost] = useState([]);
+  const auth = useAuth() 
 
-  
+//  const navigate = useNavigate();
+//  const [posts, setPost] = useState([]);
 
-  console.log("home User");
-  
-
-  
+  const name = auth.username
   return (
     <>
       <header className="header">
@@ -46,8 +42,10 @@ export function HomeUsers() {
               </div>
           </div>
         </div>
-      </section>      
-      <Footer />
+      </section>
+      <div>      
+        <Footer />
+      </div>
     </>
     
   )
