@@ -4,7 +4,7 @@
   left: 120px;
   display: flex;
   flex-direction: row;
-  width: 900px;
+  width: 800px;
 }
 .timeline_left{
     flex: 0.7;
@@ -31,7 +31,7 @@
     width: 800px;
   }
   .timeline_left{
-      flex: 0.4;
+      flex: 0.3;
       /* height: calc(1000vh - 60px); */
       /* transition: all 0.3s ease-in; */
       /* overflow: hidden; */

@@ -96,5 +96,37 @@ html{
   border-radius: 10px;
 }
 
+@media (max-width: 1400px) {
+  .public{
+    display: flex;
+    flex-direction: row;
+  }
+  .public_nav{
+    flex: 0.1
+  }
+  .public_time{
+    flex: 0.5
+  }
+  .hero{
+    flex: 0.2
+  }
+}
 
+@media (max-width: 768px) {
+  .timeline{ 
+    position: relative;
+    top: 120px;
+    left: 0px;
+    display: flex;
+    flex-direction: row;
+    width: 100px;
+  }
+
+  .timeline_left{
+    flex: 0;
+  }
+  .timeline_right{
+    flex: 0;
+  }
+}
 
