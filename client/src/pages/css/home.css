@@ -88,6 +88,7 @@ html{
 
 .h5 {
   font-family: 'Kite One', sans-serif;
+  text-decoration: none;
   color: rgb(255, 255, 255);
   font-size: 135%;
   text-align: left;

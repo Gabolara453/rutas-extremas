@@ -16,7 +16,7 @@ function Post() {
         <div className='post' key={item[0]}>
           <div className="post-header">
             <div className="post-headerAutor">
-              <Avatar>R</Avatar>
+              <Avatar>S</Avatar>
               <h3>redian_</h3> 
             </div>
           </div>
@@ -33,9 +33,15 @@ function Post() {
                 <NavLink>                
                   <h5 className="h5">{item[3]}</h5>
                 </NavLink>
-                <p>
+                <h2 className='h2'>
                   Ubicacion
-                </p>
+                  <p>{item[11]},</p>
+                  <p>{item[10]}</p>
+                  <br />
+                  Dificutad
+                  <p>{item[9]}</p>
+
+                </h2>
               </div>
             </div>
           </div>

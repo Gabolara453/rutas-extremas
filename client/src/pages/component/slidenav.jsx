@@ -45,13 +45,6 @@ function Slidenav() {
         <span>Explorar</span>
       </button>
 
-      <NavLink to="/map">
-        <button className="slidenav_button">
-          <MapIcon />
-          <span>Mapa</span>
-        </button>
-      </NavLink>
-
       <button className="slidenav_button" onClick={(e) => handleRegisterWithGoogle(e)}>
         <LoginIcon />
         <span>Login</span>

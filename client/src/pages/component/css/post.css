@@ -10,11 +10,11 @@
 }
 
 .post {
+  background-image: url("../../assets/img/post1.jpg");
   display: flex;
   flex-direction: column;
   padding: 10px 25px;
   border-radius: 15px;
-  background-color: rgba(0, 0, 0, 0.6);
   margin-right: 60px;
   margin-bottom: 20px;
   height: 600px;
@@ -73,6 +73,7 @@
 
 .post-footer h5 {
   position: relative;
+  text-decoration: none;
   top: 0;
   margin: 0;
 
@@ -81,7 +82,22 @@
 h2 {
   font-family: 'Quicksand', sans-serif;
   color: rgb(255, 255, 255);
+  position: relative;
+  top: 1px;
+  font-size:25px;
 }
+
+h2 p {
+  text-align: relative;
+  top: 10px;
+  color: white;
+  font-size: 80%;
+  margin: 0;
+  padding: 0;
+
+}
+
+
 
 .caja-de-texto {
   text-align: left; /* Alinea el texto a la izquierda dentro de la caja */
