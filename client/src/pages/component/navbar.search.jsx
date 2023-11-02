@@ -1,6 +1,7 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useNavigate, NavLink } from "react-router-dom";
 import { useAuth } from "../../context/authContext";
+import { get_Post } from "../../context/auth.backend";
 import LogoFilter from "../assets/img/pngegg-filter.png"
 import './css/navbar.css'
 import Hamburger from '../assets/img/t.png'
@@ -14,24 +15,66 @@ export function NavbarSearch() {
 
 
   const [showNavbar, setShowNavbar] = useState(false)
-  // const [search, setSearch] = useState("")
-  // const [tablaPost, setTablaPost] = useState("")
+  const [search, setSearch] = useState("")
+  const [postR, setPostR] = useState("")
+  const [post, setPost] = useState("")
+  const [tablaPost, setTablaPost] = useState("")
+  const [open, setOpen] = useState(false);
 
+  const handleOpen = () => {
+    setOpen(!open);
+  };
   const handleShowNavbar = () => {
     setShowNavbar(!showNavbar)
   }
 
+  useEffect(() => {
+    get_Post().then( data => {
+      setPost(data.response);
+      setTablaPost(data.response);
+    }).catch(error => {
+        console.error("error en obtener los post, navbar", error)
+      })
+  }, [])
+
+  // useEffect(() => {
+  //   if(postR) {
+  //     onChangeSearch(postR);
+  //   }
+  // },[postR])
+
   const handleTextSearch = (e) => {
     e.preventDefault();
-    auth.logout()
-    navigate("/")
+    setPostR(e.target.value)
+    setSearch(e.target.value)
+    filtrar(e.target.value)
+    console.log("busqueda: "+e.target.value);
+    
+  }
+
+  const filtrar = (terminoBusqueda) => {
+    var resultadosBusqueda = tablaPost.filter((elemento) => {
+      if(elemento[3].toString().toLowerCase().includes(terminoBusqueda.toLowerCase())){
+        
+        return elemento[3]
+      };
+      
+    });
+    const resultado = resultadosBusqueda.map((item) => (
+        <li className="list-seach" key={item[0]}>
+          <NavLink to={`/Post/:${item[0]}`}>
+            {item[3]}
+          </NavLink>
+        </li>
+    ));
+    setPostR(resultado);
   }
 
   return (
     <nav className="navbar">
       <div className="container">
-        <div className="input-field-search">
-          <input type="text" placeholder="Buscar Publicación" onClick={(e) => handleTextSearch(e.target.value)} />
+        <div className="input-field-search" /* onClick={(e) => } */>
+          <input type="text" placeholder="Buscar Publicación" onChange={handleTextSearch} />
         </div>
         <div className="menu-icon" onClick={handleShowNavbar}>
           <img src={Hamburger}/>
@@ -42,6 +85,11 @@ export function NavbarSearch() {
           </div>
         </div>
       </div>
+      {search ? 
+        <ul className="ul-seach">
+          {postR}
+        </ul>
+      : <></>}
     </nav>
   )
 }
