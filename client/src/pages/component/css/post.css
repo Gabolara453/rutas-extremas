@@ -76,6 +76,7 @@
 }
 
 .post-footer h5 {
+  font-size: 20px;
   position: relative;
   top: 0;
   margin: 0;
@@ -99,8 +100,6 @@
   padding: 0;
 
 }
-
-
 
 .caja-de-texto {
   text-align: left; /* Alinea el texto a la izquierda dentro de la caja */
