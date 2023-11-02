@@ -118,19 +118,43 @@ export function Register() {
 
         <form className="form-rgs" onSubmit={handleRegister}>
           <h3 className="tittle">Register</h3>
-          <input name='username' placeholder='Username' onChange={(e) => setUsername(e.target.value)} className="input-rg" type="text"/>
-          <input name='fecha' placeholder='Fecha de Nacimiento' onChange={handleDateChange} className="input-rg" type="date"/>
-          <select value={regn} onChange={(e) => setRegion(e.target.value)}>
-            <option value="">Selecciona una opción 1</option>
-            {options1}
-          </select>
-          <select value={comna} onChange={(e) => setComuna(e.target.value)}>
-            <option value="">Selecciona una opción 2</option>
-            {options2}
-          </select>
-          <button onClick={(e) => handleRegister(e)} className="button-rg">submit</button>
+          <div className="field email-field">
+            <div className="input-field">
+              <label>Nombre de Usuario:</label>
+              <input name='username' placeholder='Ingresa un nombre de usuario' onChange={(e) => setUsername(e.target.value)} className="..." type="text" required/>
+              {/*<label className="input-group_label">ingresa un nombre de usuario</label>*/}
+            </div>
+          </div>
+         <div className="field email-field">
+            <div className="input-field">
+              <label>Fecha de Nacimiento</label>
+              <input name='fecha' placeholder='Fecha de Nacimiento' onChange={handleDateChange} className="input-rg" type="date"/>
+            </div>
+          </div>
+          <div className="field email-field">
+            <div className="input-field">
+              <label>Región</label>
+              <select value={regn} onChange={(e) => setRegion(e.target.value)}>
+                <option value="">Selecciona una Región</option>
+                {options1}
+              </select>
+            </div>
+          </div>
+          <div className="field email-field">
+            <div className="input-field">
+              <label>Comuna</label>
+              <select value={comna} onChange={(e) => setComuna(e.target.value)}>
+                <option value="">Selecciona una Comuna</option>
+                {options2}
+              </select>
+            </div>
+          </div>
+          <div className="field email-field">
+            <div className="input-field">
+              <button onClick={(e) => handleRegister(e)} className="button-rg">submit</button>
+            </div>
+          </div>
         </form>
-
       </div>
     
   )
