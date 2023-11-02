@@ -1,6 +1,6 @@
 
 .navbar {
-  top: 10px;
+  top: 0px;
   position: relative;
   background-color: #868686;
   width: 60%;
@@ -59,6 +59,7 @@
 }
 .navbar li a {
   color: #000000;
+  text-decoration: none;
   /* background-color: #000000; */
 }
 

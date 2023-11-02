@@ -8,3 +8,49 @@
 .timeline_right{
     flex: 0.3
 }
+
+@media (max-width: 1400px) {
+  .timeline{ 
+    position: relative;
+    top: 120px;
+    left: 120px;
+    display: flex;
+    flex-direction: row;
+    width: 800px;
+  }
+  .timeline_left{
+      flex: 0.4;
+      /* height: calc(1000vh - 60px); */
+      /* transition: all 0.3s ease-in; */
+      /* overflow: hidden; */
+  }
+  .timeline_right{
+      flex: 0.1;
+  }
+
+  .timeline-post {
+    position: relative;
+    /* left: 400px; */
+    width: 700px;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 768px) {
+  .timeline{ 
+    position: relative;
+    top: 120px;
+    left: 0px;
+    display: flex;
+    flex-direction: row;
+    width: 100px;
+  }
+
+  .timeline_left{
+    flex: 0;
+  }
+  .timeline_right{
+    flex: 0;
+  }
+}

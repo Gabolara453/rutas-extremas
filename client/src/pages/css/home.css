@@ -22,10 +22,12 @@ html{
   justify-content: space-around;
   align-items: center;
   z-index: 100;
+  background-color: #fffefe;
+  box-shadow: 0 5px 5px rgb(0, 0, 0, 0.2);
 }
 
 .logo-tittle-name {
-  margin-top: 40px;
+  margin-top: 20px;
   position: relative;
   width: 370px;
   height: 120px;
@@ -97,5 +99,37 @@ html{
   border-radius: 10px;
 }
 
+@media (max-width: 1400px) {
+  .public{
+    display: flex;
+    flex-direction: row;
+  }
+  .public_nav{
+    flex: 0.1
+  }
+  .public_time{
+    flex: 0.5
+  }
+  .hero{
+    flex: 0.2
+  }
+}
 
+@media (max-width: 768px) {
+  .timeline{ 
+    position: relative;
+    top: 120px;
+    left: 0px;
+    display: flex;
+    flex-direction: row;
+    width: 100px;
+  }
+
+  .timeline_left{
+    flex: 0;
+  }
+  .timeline_right{
+    flex: 0;
+  }
+}
 

@@ -142,6 +142,17 @@ select {
   padding: 0 15px;
   border: 1px solid #d1d1d1;
 }
+
+.input-field label {
+  height: 100%;
+  width: 95%;
+  outline: none;
+  border: none;
+  border-radius: 8px;
+  padding: 0 15px;
+  text-align: left;
+}
+
 .invalid input {
   border-color: #d93025;
 }
