@@ -10,7 +10,7 @@ function Post() {
 
   useEffect(() => {
     get_Post().then(data => {
-      // console.log(data.response)
+      console.log(data.response)
       const arrayPost = data.response;
       const mappedPost = arrayPost.map((item) => (
         <div className='post' key={item[0]}>
@@ -18,9 +18,6 @@ function Post() {
             <div className="post-headerAutor">
               <Avatar>R</Avatar>
               <h3>redian_</h3> 
-            </div>
-            <div className='time-post'>
-              <span>12h</span> 
             </div>
           </div>
           <div className='post-hero'>
@@ -33,21 +30,25 @@ function Post() {
             </div>
             <div className='post-right'>
               <div className="post-footer">
-                <NavLink>
+                <NavLink>                
                   <h5 className="h5">{item[3]}</h5>
                 </NavLink>
+                <p>
+                  Ubicacion
+                </p>
               </div>
             </div>
           </div>
           <div>
-            <h4>comentarios</h4>
+            <h2>Comentarios</h2>
+          </div>
+          <div className="contenedor">
+            <input type="text" className="caja-de-texto" placeholder="Ingresa tu texto" />
           </div>
         </div>
       ));
       setPost(mappedPost);
-      
     })
-    // console.log(imagen)
   }, [])
   return (
     <div className='posts'>
