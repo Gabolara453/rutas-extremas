@@ -3,12 +3,12 @@
 import { useAuth } from "./context/authContext";
 import HomeUsers from "./pages/home.users";
 import HomePublic from "./pages/home.public";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 function App() {
   const auth = useAuth();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
 
   if(auth.state === 2) {

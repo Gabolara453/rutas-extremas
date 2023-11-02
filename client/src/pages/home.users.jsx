@@ -1,4 +1,4 @@
-import React, {  useState } from "react";
+import React from "react";
 // import { useNavigate, NavLink } from "react-router-dom";
 import "./css/home.css"
 // import { useAuth } from "../context/authContext";
@@ -7,17 +7,17 @@ import NavbarSearch from "./component/navbar.search";
 import Timeline from "./component/timeline";
 import Slidenavuser from "./component/slidenavuser";
 import Footer from "./component/footer";
-import { useAuth } from "../context/authContext";
-import { infoUser } from "../context/auth.backend";
+// import { useAuth } from "../context/authContext";
+// import { infoUser } from "../context/auth.backend";
 
 
 export function HomeUsers() {
-  const auth = useAuth() 
+  // const auth = useAuth() 
 
 //  const navigate = useNavigate();
 //  const [posts, setPost] = useState([]);
 
-  const name = auth.username
+  // const name = auth.username
   return (
     <>
       <header className="header">

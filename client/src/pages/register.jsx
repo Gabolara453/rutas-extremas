@@ -29,7 +29,6 @@ export function Register() {
   // const [res, setRes] = useState("");
 
   useEffect(() => {
-    
     getAllRegiones()
       .then((data) => {
         
@@ -93,6 +92,7 @@ export function Register() {
     try {
       // id_region = parseInt(region);
       // id_comuna = parseInt(comuna)
+      console.log(u_id, usernme, displyNme, emil, fech_nci, regn, comna, accessTkn)
       await registerUser(
           u_id, usernme, displyNme, emil, fech_nci, regn, comna, accessTkn
       ).then((data) => {
@@ -100,11 +100,11 @@ export function Register() {
             alert("Usuario Registrado Correctamente");
             navigate("/home");
           } else {
-            alert(data.msg)
+            alert("Faltan ingresar datos en los campos")
             navigate("/register")
           }
         }).catch((error) => {
-        console.error('Error al obtener los datos del segundo select:', error);
+          console.error('Error al obtener los datos del usuario:', error);
       });
       
     } catch (error){
@@ -128,13 +128,13 @@ export function Register() {
          <div className="field email-field">
             <div className="input-field">
               <label>Fecha de Nacimiento</label>
-              <input name='fecha' placeholder='Fecha de Nacimiento' onChange={handleDateChange} className="input-rg" type="date"/>
+              <input name='fecha' placeholder='Fecha de Nacimiento' onChange={handleDateChange} className="input-rg" type="date" required/>
             </div>
           </div>
           <div className="field email-field">
             <div className="input-field">
               <label>Región</label>
-              <select value={regn} onChange={(e) => setRegion(e.target.value)}>
+              <select value={regn} onChange={(e) => setRegion(e.target.value)} required>
                 <option value="">Selecciona una Región</option>
                 {options1}
               </select>
@@ -143,7 +143,7 @@ export function Register() {
           <div className="field email-field">
             <div className="input-field">
               <label>Comuna</label>
-              <select value={comna} onChange={(e) => setComuna(e.target.value)}>
+              <select value={comna} onChange={(e) => setComuna(e.target.value)} required>
                 <option value="">Selecciona una Comuna</option>
                 {options2}
               </select>

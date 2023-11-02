@@ -168,7 +168,7 @@ export default function NewPost() {
           { loeaderPost === true ? <LoaderPost  />
           :<div className="container-nw">
             <form className="form" onSubmit={handleNewPost}>
-              <header>NewPost</header>
+              <header>Crear Nueva Publicación</header>
                 <div className="content-input">
                   <InputsPosts onInputChange={handleInputChange} />
                 </div>

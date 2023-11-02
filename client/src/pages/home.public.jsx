@@ -1,5 +1,9 @@
-import React, { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+
+//Pagina de inicio publico
+
+import React from "react";
+// import React, { useState, useEffect } from "react";
+// import { NavLink } from "react-router-dom";
 import "./css/home.css"
 import LogoImageName from "./assets/img/logo-nombre.jpg"
 import NavbarSearch from "./component/navbar.search";
@@ -10,14 +14,8 @@ import Footer from "./component/footer";
 
 export function HomePublic() {
 
-  const [posts, setPost] = useState([]);
-
+  // const [posts, setPost] = useState([]);
   // const navigate = useNavigate();
-
-
-
-  
-
 
   console.log("home Public");
   
@@ -40,7 +38,7 @@ export function HomePublic() {
           
             </h1>
             <div className="div-posts section-container"> 
-              {posts}
+              {/* posts */}
             </div>
           </div>    
         </div>

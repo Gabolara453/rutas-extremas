@@ -116,6 +116,21 @@ html{
 }
 
 @media (max-width: 768px) {
+  .logo-tittle-name {
+    margin-top: 20px;
+    position: relative;
+    width: 200px;
+    height: 120px;
+    
+  }
+
+  .logo-tittle-name img {
+    width: 100%;
+    border: 5px;
+    border-radius: 15px;
+  }
+
+
   .timeline{ 
     position: relative;
     top: 120px;

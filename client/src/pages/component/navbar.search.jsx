@@ -77,7 +77,7 @@ export function NavbarSearch() {
           <input type="text" placeholder="Buscar Publicación" onChange={handleTextSearch} />
         </div>
         <div className="menu-icon" onClick={handleShowNavbar}>
-          <img src={Hamburger}/>
+          {/* <img src={Hamburger}/> */}
         </div>
         <div className={`nav-elements  ${showNavbar && 'active'}`}>
           <div className="logo-tittle">

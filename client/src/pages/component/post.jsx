@@ -35,13 +35,14 @@ function Post() {
                 </NavLink>
                 <h2 className='h2'>
                   Ubicacion
+                </h2>
                   <p>{item[11]},</p>
                   <p>{item[10]}</p>
                   <br />
+                <h2 className='h2'>
                   Dificutad
-                  <p>{item[9]}</p>
-
                 </h2>
+                  <p>{item[9]}</p>
               </div>
             </div>
           </div>
