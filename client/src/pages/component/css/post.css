@@ -2,9 +2,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Text+Me+One&display=swap');
 
 .posts {
-  margin-top: 20px;
-  margin-left: 70px;
-  width: 600px;
+  /* margin-top: 20px; */
+  /* margin-left: 70px; */
+  /* width: 600px; */
   display: flex;
   flex-direction: column;
 }
