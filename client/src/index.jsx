@@ -9,6 +9,7 @@ import NewPost from './pages/new.post';
 import EditUser from './pages/edit.user';
 import EditPost from './pages/edit.post';
 import UserProfile from './pages/profile.user';
+import UserProfilePublic from './pages/profile.public';
 import PostProfile from "./pages/profile.post";
 // import Map from './pages/component/map.js';
 // import Map from './pages/component/map2';
@@ -26,6 +27,7 @@ root.render(
           <Route path="/register" element={<Register />} />
           <Route path="/user/newPost" element={<NewPost />} />
           <Route path="/user/profile" element={<UserProfile/>} />
+          <Route path="/user/profile/:id" element={<UserProfilePublic/>} />
           <Route path="/user/edit" element={<EditUser />} />
           <Route path="/Post/:id" element={<PostProfile />} />
           <Route path="/post/edit" element={<EditPost />} />

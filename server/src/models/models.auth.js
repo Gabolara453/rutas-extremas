@@ -15,6 +15,21 @@ const closeConnection = async ()  => {
   }
 }
 
+export async function checkPublicUserExist(id) {
+  try {
+    connection = await oracleDB.getConnection(connection_db);
+    const response = await connection.execute(
+      `select id_user from usuario where id = :id`, [id]
+    );
+    const result = response.rows[0];
+    return result;
+  } catch (error) {
+    return console.error(error);
+  } finally {
+    closeConnection();
+  }
+}
+
 export async function checkUserExist(id_usr) {
   try {
     connection = await oracleDB.getConnection(connection_db);

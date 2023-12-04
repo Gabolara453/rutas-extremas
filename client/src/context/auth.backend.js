@@ -24,6 +24,28 @@ export async function userExists( id_u ) {
   }
 }
 
+export async function public_infoUser( id ) {
+  const response = await fetch(`/users/get-public-info-user`,{
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+        id: id
+      }
+    ),
+    mode: 'cors'
+    
+  });
+  const data = await response.json();
+  if (response.status > 300) { 
+    const errors = data.errors;
+    return errors;
+  } else {
+    return data;
+  }
+}
+
 export async function infoUser( u_id ) {
   const response = await fetch(`/users/get-info-user`,{
     method: 'POST',

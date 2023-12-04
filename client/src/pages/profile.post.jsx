@@ -4,11 +4,11 @@ import { useParams } from 'react-router-dom';
 
 export function PostProfile(){
   const { id } = useParams()
-
+  const _id = id.slice(1)
 
   return(
     <div>
-      Post Profile { id }
+      Post Profile { _id }
     </div>
   )
 };

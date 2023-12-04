@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { check } from "express-validator";
 import validarCampos from "../midleware/validate.camps.js";
-import {  getCheckUserExist, login, logout, regiones, comunas, getCoordRegion, categorias, subCategorias, dificultades } from "../controllers/controllers.auth.js";
+import { getCheckPublicUserExist, getCheckUserExist, login, logout, regiones, comunas, getCoordRegion, categorias, subCategorias, dificultades } from "../controllers/controllers.auth.js";
 
 const router = Router();
 
@@ -20,6 +20,11 @@ router.put("/logout", [
   ], logout
 );
 
+router.post("/check-public-User", [
+    check("id").not().isEmpty(),
+    validarCampos
+  ], getCheckPublicUserExist
+);
 
 router.post("/check-User", [
     check("id_usr").not().isEmpty(),

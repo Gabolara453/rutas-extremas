@@ -1,6 +1,22 @@
 import { response } from 'express';
-import { checkUserExist, checkUsernameExist } from '../models/models.auth.js';
-import { get_user, createUser, updateUser, deleteUsers } from '../models/models.users.js';
+import { checkPublicUserExist, checkUserExist, checkUsernameExist } from '../models/models.auth.js';
+import {get_public_user, get_user, createUser, updateUser, deleteUsers } from '../models/models.users.js';
+
+export const public_user_info = async ( req, res = response ) => {
+  const { id } = req.body;
+  try {
+    const result = await checkPublicUserExist(id);
+    if (result) {
+      const response = await get_public_user(id);
+      return res.json({ success: true, response }).status(200);
+    }
+    return res.status(400).json({
+      msg: "ERROR: auth controller o db login"
+    })
+  } catch (error) {
+    console.error(error);
+  }
+}
 
 export const user_info = async ( req, res = response ) => {
   const { id_user } = req.body;

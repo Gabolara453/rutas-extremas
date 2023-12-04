@@ -1,30 +1,33 @@
 import React, { useEffect, useState } from "react";
+import { useParams } from 'react-router-dom';
 // import Data from "./prueba.json";
 import './css/profile.user.css';
 import imagen from "./assets/aa.jpg"
-import { useAuth } from "../context/authContext";
-import { infoUser } from "../context/auth.backend";
+// import { useAuth } from "../context/authContext";
+import { public_infoUser } from "../context/auth.backend";
 import Slidenavuser from "./component/slidenavuser";
 
 
-const UserProfile = () => {
-  const auth =  useAuth();
+const UserProfilePublic = () => {
+  // const auth =  useAuth();
 
-  const id = auth.id;
-  console.log(id);
-
+  // const id = auth.id;
+  // console.log(id);
+  const { id } = useParams()
+  const _id = id.slice(1)
   const [user, setUser] = useState();
 
   useEffect(() => {
-    if(!id) return;
-    infoUser(id).then(data => {
-      console.log(data.response)
+    public_infoUser(_id).then(data => {
       const infoUser = data.response;
       setUser(infoUser);
+
     })
-  }, [id])
+  }, [])
 
   console.log(user);
+
+    
 
   return (
     <>
@@ -52,4 +55,4 @@ const UserProfile = () => {
 };
 
 
-export default UserProfile;
+export default UserProfilePublic;

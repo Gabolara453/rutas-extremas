@@ -1,5 +1,6 @@
 import { response } from "express";
 import {  
+  checkPublicUserExist,
   checkUserExist, 
   checkUsernameExist,
   loginUser, 
@@ -12,7 +13,14 @@ import {
   getDificultad
 } from "../models/models.auth.js";
 
-
+export const getCheckPublicUserExist = async ( req, res = response ) => {
+  const result = await checkPublicUserExist(req.body.id);
+  if ( result ) {
+    res.json({ success: true }).status(200);
+  } else {
+    res.json({ success: false }).status(200);
+  }
+}
 
 export const getCheckUserExist = async ( req, res = response ) => {
   const result = await checkUserExist(req.body.id_usr);
