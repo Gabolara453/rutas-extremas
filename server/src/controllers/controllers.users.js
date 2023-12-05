@@ -35,14 +35,14 @@ export const user_info = async ( req, res = response ) => {
 }
 
 export const register = async ( req, res = response ) => {
-  const { id_user, username, displayName, email, fecha_naci, region, comuna, accessToken } = req.body;
+  const { id_user, username, displayName, email, edad, fecha_naci, region, photoURL,  comuna, accessToken } = req.body;
   
   try {
     const response = await checkUserExist(id_user);
     if (!response){
       const response2 = await checkUsernameExist(username);
       if(!response2){
-        const result = await createUser( id_user, username, displayName, email, fecha_naci, region, comuna, accessToken);
+        const result = await createUser( id_user, username, displayName, email, edad, fecha_naci, photoURL,  region, comuna, accessToken);
         return res.json({
             success: true,
             result
@@ -60,12 +60,12 @@ export const register = async ( req, res = response ) => {
 
 
 export const update = async ( req, res = response ) => {
-  const { id_user, username, displayName, fecha_naci, region, comuna } = req.body;
+  const { id_user, username, displayName, edad, fecha_naci, photoURL, region, comuna } = req.body;
   
   try {
     const response = await checkUserExist(id_user);
     if (response){
-        const result = await updateUser( id_user, username, displayName, fecha_naci, region, comuna );
+        const result = await updateUser( id_user, username, displayName, edad, fecha_naci, photoURL, region, comuna );
         return res.json({
             success: true,
             result

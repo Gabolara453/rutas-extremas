@@ -20,7 +20,7 @@ export async function get_public_user(id){
   try{
     connection = await oracleDB.getConnection(connection_db);
     const response = await connection.execute(
-      `select U.id, U.username, U.displayName, U.email, U.fecha_naci, R.nombre_region, C.nombre_comuna
+      `select U.id, U.username, U.displayName, U.email, U.edad, U.fecha_naci, U.photURL, R.nombre_region, C.nombre_comuna
         from usuario U inner join ubicacion_user UB on U.id_ubi_user = UB.id
         inner join regiones R on UB.id_rgn_u = R.id 
         inner join comunas C on UB.id_cma_u = C.id
@@ -39,7 +39,7 @@ export async function get_user(id_user){
   try{
     connection = await oracleDB.getConnection(connection_db);
     const response = await connection.execute(
-      `select U.id, U.username, U.displayName, U.email, U.fecha_naci, R.nombre_region, C.nombre_comuna
+      `select U.id, U.username, U.displayName, U.email, U.edad, U.fecha_naci, U.photURL, R.nombre_region, C.nombre_comuna
         from usuario U inner join ubicacion_user UB on U.id_ubi_user = UB.id
         inner join regiones R on UB.id_rgn_u = R.id 
         inner join comunas C on UB.id_cma_u = C.id
@@ -54,7 +54,7 @@ export async function get_user(id_user){
   }
 }
 
-export async function createUser( id_user, username, displayName, email, fecha_naci, region, comuna, accessToken ) {
+export async function createUser( id_user, username, displayName, email, edad, fecha_naci, photoURL, region, comuna, accessToken ) {
   try {
     connection = await oracleDB.getConnection(connection_db);
     let resultado, msg;
@@ -67,12 +67,12 @@ export async function createUser( id_user, username, displayName, email, fecha_n
           resultdo varchar2(50);
           mensaje varchar2(100);
       begin
-          crear_usuario(:id_user, :username, :displayName, :email, :fecha_naci, :region, 
+          crear_usuario(:id_user, :username, :displayName, :email, :edad, :fecha_naci, :photoURL, :region, 
                   :comuna, :accessToken, :fechaHoraSQL, :resultdo, :mensaje);
           DBMS_OUTPUT.PUT_LINE(RESULTDO || ' - ' || MENSAJE );
       end;
       `,{
-          id_user, username, displayName, email, fecha_naci, region, comuna, accessToken, fechaHoraSQL,
+          id_user, username, displayName, email, edad, fecha_naci, photoURL, region, comuna, accessToken, fechaHoraSQL,
           resultdo: { dir: oracleDB.BIND_OUT, type: oracleDB.STRING },
           mensaje: { dir: oracleDB.BIND_OUT, type: oracleDB.STRING }
         }
@@ -90,7 +90,7 @@ export async function createUser( id_user, username, displayName, email, fecha_n
 }
 
 
-export async function updateUser( id_user, username, displayName, fecha_naci, region, comuna ) {
+export async function updateUser( id_user, username, displayName, edad, fecha_naci, photoURL, region, comuna ) {
   try {
     connection = await oracleDB.getConnection(connection_db);
     let resultado, msg;
@@ -102,12 +102,12 @@ export async function updateUser( id_user, username, displayName, fecha_naci, re
           resultado varchar2(50);
           mensaje varchar2(100);
       begin
-          update_usuario(:id_user, :username, :displayName, :fecha_naci, :region, 
+          update_usuario(:id_user, :username, :displayName, :edad, :fecha_naci, :photoURL, :region, 
                   :comuna, :fechaHoraSQL, :resultdo, :mensaje);
           DBMS_OUTPUT.PUT_LINE(RESULTADO || ' - ' || MENSAJE );
       end;
       `,{
-          id_user, username, displayName, fecha_naci, region, comuna, fechaHoraSQL,
+          id_user, username, displayName, edad, fecha_naci, photoURL, region, comuna, fechaHoraSQL,
           resultdo: { dir: oracleDB.BIND_OUT, type: oracleDB.STRING },
           mensaje: { dir: oracleDB.BIND_OUT, type: oracleDB.STRING }
         }

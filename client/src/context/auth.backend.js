@@ -69,7 +69,7 @@ export async function infoUser( u_id ) {
 }
 
 
-export async function registerUser( u_id, usernme, displyNme, emil, fech_nci, regn, comna, accessTkn ) {
+export async function registerUser( u_id, usernme, displyNme, emil, age, fech_nci, photURL, regn, comna, accessTkn ) {
   const response = await fetch(`/users/register`,{
     method: 'POST',
     headers: {
@@ -80,7 +80,9 @@ export async function registerUser( u_id, usernme, displyNme, emil, fech_nci, re
         username: usernme,
         displayName: displyNme,
         email: emil,
+        edad: age,
         fecha_naci: fech_nci,
+        photoURL: photURL,
         region: regn,
         comuna: comna,
         accessToken: accessTkn

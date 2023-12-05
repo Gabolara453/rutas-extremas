@@ -10,52 +10,93 @@
   justify-content: center;
   flex-direction: column;
   padding: 10px;
-  background: gray;
+  background: white;
   border-radius: 15px;
   margin-bottom: 30px;
 }
 
-
-
-.input-group {
-  position: relative;
-}
-
-.input-group_input {
-  font: Inherit;
-  color: #FFF;
-  padding: 18px;
+.input-field input {
+  height: 100%;
+  width: 95%;
+  outline: none;
   border: none;
-  border-radius: 4px;
-  outline: 2px solid #FFF;
-  background-color: transparent;
-  transition: outline-color 500ms;
+  border-radius: 8px;
+  padding: 0 15px;
+  border: 1px solid #d1d1d1;
 }
 
-.input-group_input:is(:focus, :valid) {
-  outline-color: #3c50eb;
+.input-field label {
+  height: 100%;
+  width: 95%;
+  outline: none;
+  border: none;
+  border-radius: 8px;
+  padding: 0 15px;
+  text-align: left;
 }
 
-
-.input-group_label {
-  position: absolute;
-  top: e;
-  left: 0;
-  translate: 10px 10px;
-  color: #fff;
-  transition: translate 500ms,
-    scale 500ms;
+.invalid input {
+  border-color: #d93025;
 }
 
-.input-group_input:focus
-.input-group_label,
-.input-group_input:valid
-.input-group_label {
-  padding-inline: 5px;
-  translate: 10px -14px;
-  scale: 0.8;
-  background-color: #000;
+.error-span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 4px;
+  color: #d93025;
+  font-size: 15px;
 }
+
+.error-text-span {
+  margin: 0;
+  color: #d93025;
+}
+
+.error-icon {
+  margin-right: 6px;
+  font-size: 15px;
+}
+
+/* .input-group { */
+/*   position: relative; */
+/* } */
+/**/
+/* .input-group__input { */
+/*   font: Inherit; */
+/*   color: #FFF; */
+/*   padding: 18px; */
+/*   border: none; */
+/*   border-radius: 4px; */
+/*   outline: 2px solid #FFF; */
+/*   background-color: transparent; */
+/*   transition: outline-color 500ms; */
+/* } */
+
+/* .input-group__input:is(:focus, :valid) { */
+/*   outline-color: #3c50eb; */
+/* } */
+/**/
+/**/
+/* .input-group__label { */
+/*   position: absolute; */
+/*   top: e; */
+/*   left: 0; */
+/*   translate: 10px 10px; */
+/*   color: #fff; */
+/*   transition: translate 500ms, */
+/*     scale 500ms; */
+/* } */
+/**/
+/* .input-group__input:focus */
+/* .input-group__label, */
+/* .input-group__input:valid */
+/* .input-group__label { */
+/*   padding-inline: 5px; */
+/*   translate: 10px -14px; */
+/*   scale: 0.8; */
+/*   background-color: #000; */
+/* } */
 
 .button-rg {
   background-color: #fff;
