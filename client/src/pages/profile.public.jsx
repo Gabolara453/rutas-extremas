@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
 // import Data from "./prueba.json";
 import './css/profile.user.css';
-import imagen from "./assets/aa.jpg"
 // import { useAuth } from "../context/authContext";
+import LogoImageName from "./assets/img/logo-nombre.jpg"
+import NavbarSearch from "./component/navbar.search";
 import { public_infoUser } from "../context/auth.backend";
 import Slidenavuser from "./component/slidenavuser";
 
@@ -31,6 +32,12 @@ const UserProfilePublic = () => {
 
   return (
     <>
+      <header className="header">
+          <div className="logo-tittle-name">
+           <img src={LogoImageName} alt="" /> 
+          </div>
+          <NavbarSearch />
+        </header>
       <div className="public">
         <div className="public_nav">
           <Slidenavuser />

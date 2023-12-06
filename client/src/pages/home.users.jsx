@@ -21,26 +21,28 @@ export function HomeUsers() {
   // const name = auth.username
   return (
     <>
-      <header className="header">
-        <div className="logo-tittle-name">
-         <img src={LogoImageName} alt="" /> 
-        </div>
-        <NavbarSearch />
-      </header>
-      <div className="public">
-        <div className="public_nav">
-          <Slidenavuser />
-        </div>
-        <div className="public_time">
-          <Timeline />
-            <h1>
+      <section>
+        <header className="header">
+          <div className="logo-tittle-name">
+           <img src={LogoImageName} alt="" /> 
+          </div>
+          <NavbarSearch />
+        </header>
+        <div className="public">
+          <div className="public_nav">
+            <Slidenavuser />
+          </div>
+          <div className="public_time">
+            <Timeline />
+              <h1>
 
-            </h1>
-            <div className="div-posts section-container"> 
-              {/*posts*/}
-            </div>
+              </h1>
+              <div className="div-posts section-container"> 
+                {/*posts*/}
+              </div>
+          </div>
         </div>
-      </div>
+      </section>
       <Footer />
     </>
     

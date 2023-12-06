@@ -34,13 +34,15 @@ function Post() {
           <div className="post-header">
             <div className="post-headerAutor">
               <Avatar><img src={item[3]} /></Avatar>
-              <h3>
                 {id === item[1] ?
+                  <h3>
                     <NavLink to={`/user/profile`}>{item[2]}</NavLink>
+                  </h3>
                   :
+                  <h3>
                     <NavLink to={`/user/profile/:${item[0]}`}>{item[2]}</NavLink>
+                  </h3>
                 }
-              </h3>
             </div>
             {/*<span>12hr</span>*/}
           </div>

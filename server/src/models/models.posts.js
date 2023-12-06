@@ -36,6 +36,7 @@ export async function get_Posts() {
           inner join coordenates CD on P.id_cdts = CD.id
           inner join user_post UPO on P.id = UPO.id_post_
           inner join usuario U on UPO.id_usrp_ = U.id
+          order by P.id desc
       `
     );
     const result = response.rows;

@@ -4,6 +4,8 @@ import { useAuth } from "../context/authContext";
 import Map from "./component/component-new-post/map";
 import { nwPost } from "../context/auth.backend";
 // import NavbarUser from "./component/navbar.Users";
+import LogoImageName from "./assets/img/logo-nombre.jpg"
+import NavbarSearch from "./component/navbar.search";
 import LoaderPost from "./component/component-new-post/loader.post";
 import InputsPosts from "./component/component-new-post/inputs";
 import SelectInputs from "./component/component-new-post/select";
@@ -186,6 +188,12 @@ export default function NewPost() {
 
   return (
     <div>
+      <header className="header">
+        <div className="logo-tittle-name">
+         <img src={LogoImageName} alt="" /> 
+        </div>
+        <NavbarSearch />
+      </header>
       <div className="public">
         <div className="public_nav">
           <Slidenavuser />

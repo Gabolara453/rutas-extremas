@@ -10,9 +10,14 @@
 }
 
 .post {
-  /* background-image: url("../../assets/img/post1.jpg"); */
-  background-color: white;
-  color: black;
+  background-image: url("../../assets/img/post1.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 100% 100%;
+  /* background-attachment: fixed; */
+  background-color: black;
+  /* opacity: 0.8; */
+  color: white;
   display: flex;
   flex-direction: column;
   padding: 10px 25px;
@@ -20,12 +25,12 @@
   margin-right: 60px;
   margin-bottom: 20px;
   height: 550px;
- width: 600px;
+  width: 600px;
   box-shadow: 1px 8px 25px rgba(0, 0, 0, 0.5);
 }
 
 .post a {
-  color: black;
+  color: white;
   text-decoration: none;
 }
 
@@ -54,7 +59,7 @@
   align-items: center;
   font-family: 'Text Me One', sans-serif;
   font-size: 150%;
-  color: black;
+  color: white;
 }
 
 .post-headerAutor h3 {
@@ -96,16 +101,16 @@
 }
 
 .post-footer h5 {
-  font-size: 20px;
+  font-size: 22px;
   position: relative;
   top: 0;
   margin: 0;
-  color: black;
+  color: white;
 }
 
 .h2 {
   font-family: 'Quicksand', sans-serif;
-  color: black;
+  color: white;
   position: relative;
   top: 1px;
   font-size: 25px;
@@ -114,7 +119,7 @@
 .h2 p {
   text-align: relative;
   top: 10px;
-  color: black;
+  color: white;
   font-size: 80%;
   margin: 0;
   padding: 0;
