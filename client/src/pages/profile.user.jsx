@@ -43,13 +43,14 @@ const UserProfile = () => {
       <div className="user-profile">
         {user ? 
           <>
-            <img src={user[6]} className="user-image" />
-            <h2>{user[1]}</h2>
+            <h1><img src={user[6]} className="user-image" />{user[1]}</h1>
+            
             <p>Nombre: {user[2]}</p>
             <p>Email: {user[3]}</p>
             <p>Edad: {user[4]}</p>
             <p>Fecha de nacimiento: {user[5]}</p>
-            <p>Localidad: {user[7]}</p>
+            <p>Localidad: {user[8]}, {user[7]}</p>
+
             {/* Agrega más datos del usuario según sea necesario */}        
           </>
         : 
