@@ -142,7 +142,8 @@ export async function get_Post() {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json'
-        }
+        },
+        mode: 'cors'
     });
     const data = await response.json();
     if (response.status > 300) { 
@@ -164,7 +165,8 @@ export async function get_Posted(_id) {
         body: JSON.stringify({ id: _id }),
         headers: {
           'Content-Type': 'application/json'
-        }
+        },
+        mode: 'cors'
     });
     const data = await response.json();
     if (response.status > 300) { 

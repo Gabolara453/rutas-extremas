@@ -15,7 +15,7 @@ const customIcon = new L.Icon({
 
 function MapView({coordenates}) {
 
-  const [clickedPosition, setClickedPosition] = useState();
+  const [clickedPosition, setClickedPosition] = useState(null);
   // 
   // const handleMapClick = (e) => {
   //   const { lat, lng } = e.latlng;
@@ -25,6 +25,10 @@ function MapView({coordenates}) {
   useEffect(() => {
     if(!coordenates) return;
     setClickedPosition({lat:coordenates[0], lng:coordenates[1]});
+    // setClickedPosition(JSON.stringify({ lat: coordenates[0], lng: coordenates[1]}));
+    // setClickedPosition(coordenates);
+    // const { lat, lng } = coordenates;
+    // setClickedPosition({ lat, lng });
   }, [coordenates])
 
   console.log(coordenates)
@@ -32,9 +36,8 @@ function MapView({coordenates}) {
   return (
     <>      
         <MapContainer 
-          key={`${coordenates[0]}-${coordenates[1]}`} 
           center={coordenates} 
-          zoom={10} 
+          zoom={12} 
           style={{ height: '600px', width: '400px' }}
         >
           <TileLayer

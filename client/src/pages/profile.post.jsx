@@ -19,7 +19,11 @@ export function PostProfile(){
       const postsInfo = data.response;
       const postInfo = postsInfo[0];
       setPosted(postInfo);
-      setMapCenter([postInfo[24], postInfo[25]])
+      const coordenate = {
+        lat: postInfo[21],
+        lng: postInfo[22]
+      }
+      setMapCenter(coordenate)
     })
   }, [_id])
 
@@ -66,6 +70,7 @@ export function PostProfile(){
                 </div>
                 <div className="map-view">
                   {/*<MapView coordenates={[posted[21],posted[22]]}/>*/}
+                  {/*<MapView coordenates={mapCenter}/>*/}
                 </div>
               </div>
               <div className='imagenes'>

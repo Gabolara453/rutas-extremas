@@ -61,9 +61,9 @@ export function NavbarSearch() {
       
     });
     const resultado = resultadosBusqueda.map((item) => (
-        <li className="list-seach" key={item[0]}>
-          <NavLink to={`/Post/:${item[0]}`}>
-            {item[3]}
+        <li className="list-seach" key={item[4]}>
+          <NavLink to={`/Post/:${item[4]}`}>
+            {item[7]}
           </NavLink>
         </li>
     ));
