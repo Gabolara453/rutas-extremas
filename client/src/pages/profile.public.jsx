@@ -50,7 +50,9 @@ const UserProfilePublic = () => {
             <h2>{user[1]}</h2>
             <p>Nombre: {user[2]}</p>
             <p>Email: {user[3]}</p>
-            <p>Fecha de Nacimiento: {user[4]}</p>
+            <p>Edad: {user[4]}</p>
+            <p>Fecha de nacimiento: {user[5]}</p>
+            <p>Localidad: {user[7]}</p>
             {/* Agrega más datos del usuario según sea necesario */}        
           </>
         : 

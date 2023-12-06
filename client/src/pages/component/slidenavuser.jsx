@@ -62,15 +62,6 @@ export function Slidenavuser() {
               </button>
             </NavLink>
     
-            <button className="slidenav_button">
-                <SearchIcon />
-                <span>Buscar</span>
-            </button>
-            <button className="slidenav_button">
-                <ExploreIcon />
-                <span>Explorar</span>
-            </button>
-
             <NavLink to="/user/newPost">
               <button className="slidenav_button">
                 <AddCircleIcon />
@@ -78,12 +69,7 @@ export function Slidenavuser() {
               </button>
             </NavLink>
     
-            <NavLink to="/map">
-              <button className="slidenav_button">
-                <MapIcon />
-                <span>Mapa</span>
-              </button>
-            </NavLink>
+
 
             <NavLink to="/user/profile">
               <button className="slidenav_button">

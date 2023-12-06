@@ -35,15 +35,7 @@ function Slidenav() {
         </button>
       </NavLink>
 
-      <button className="slidenav_button">
-        <SearchIcon />
-        <span>Buscar</span>
-      </button>
-      
-      <button className="slidenav_button">
-        <ExploreIcon />
-        <span>Explorar</span>
-      </button>
+
 
       <button className="slidenav_button" onClick={(e) => handleRegisterWithGoogle(e)}>
         <LoginIcon />
