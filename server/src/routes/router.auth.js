@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { check } from "express-validator";
 import validarCampos from "../midleware/validate.camps.js";
-import { getCheckPublicUserExist, getCheckUserExist, login, logout, regiones, comunas, getCoordRegion, categorias, subCategorias, dificultades } from "../controllers/controllers.auth.js";
+import { getCheckPublicUserExist, getCheckUserExist, getCheckUsernameExist, login, logout, regiones, comunas, getCoordRegion, categorias, subCategorias, dificultades } from "../controllers/controllers.auth.js";
 
 const router = Router();
 
@@ -31,6 +31,13 @@ router.post("/check-User", [
     validarCampos
   ], getCheckUserExist
 );
+
+router.post("/check-Username", [
+    check("usr").not().isEmpty(),
+    validarCampos
+  ], getCheckUsernameExist
+);
+
 
 router.get("/get-Regiones", regiones);
 

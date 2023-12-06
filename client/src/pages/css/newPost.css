@@ -80,7 +80,7 @@
 
 .hero p {
   font-family: 'Rubik', sans-serif;
-  margin-bottom: 50px;
+  /* margin-bottom: 50px; */
   /* color: #0588c5; */
 }
 
@@ -114,9 +114,19 @@
 .field {
   margin-bottom: 20px;
 }
+
 .input-field {
   position: relative;
   height: 55px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.textarea-field {
+  position: relative;
+  height: 100px;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -143,6 +153,17 @@ select {
   border: 1px solid #d1d1d1;
 }
 
+.textarea-field textarea {
+  height: 100%;
+  width: 95%;
+  outline: none;
+  border: none;
+  border-radius: 8px;
+  padding: 0 15px;
+  border: 1px solid #d1d1d1;
+  resize: none;
+}
+
 .input-field label {
   height: 100%;
   width: 95%;
@@ -167,14 +188,20 @@ select {
   cursor: pointer;
   padding: 3px;
 }
+
 .field .error {
   display: flex;
   align-items: center;
   margin-top: 6px;
+  margin-left: 6px;
   color: #d93025;
-  font-size: 13px;
-  display: none;
+  font-size: 15px;
 }
+
+.error-text {
+  margin: 0px;
+}
+
 .invalid .error {
   display: flex;
 }
@@ -182,12 +209,7 @@ select {
   margin-right: 6px;
   font-size: 15px;
 }
-.create-password .error {
-  align-items: flex-start;
-}
-.create-password .error-icon {
-  margin-top: 4px;
-}
+
 .button {
   margin: 25px 0 6px;
 }

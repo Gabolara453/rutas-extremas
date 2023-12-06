@@ -21,10 +21,10 @@ export async function get_Posts() {
     connection = await oracleDB.getConnection(connection_db);
     const response = await connection.execute(
       `
-        select U.id, U.id_user, U.username, P.id, CT.nombre_categoria, SB.nombre_sb_ct, P.titulo, 
+        select U.id, U.id_user, U.username, U.photURL, P.id, CT.nombre_categoria, SB.nombre_sb_ct, P.titulo, 
           D.dscp1, D.dscp2, D.dscp3, D.dscp4, D.dscp5, 
           DF.nombre_dificultad, R.nombre_region, C.nombre_comuna, 
-          I.img1, I.img2, I.img3, I.img4, I.img5, CD.coord_x, CD.coord_y 
+          I.img1, I.img2, I.img3, I.img4, I.img5, CD.coord_x, CD.coord_y, P.created_it 
           from post P inner join categoria CT on P.id_ctg = CT.id
           inner join sub_categoria SB on P.id_sb_ctg = SB.id
           inner join dificultad DF on P.id_dificult = DF.id

@@ -9,6 +9,7 @@
   flex-direction: column;
   justify-content: space-between;
   z-index: 1;
+  padding-bottom: 2em;
 }
 
 .div-no-user {
@@ -50,11 +51,11 @@
 .slidenav_buttons{
     display: flex;
     flex-direction: column;
-    
-
 }
+
 .slidenav_button{
     display: flex;
+    background-color: white;
     flex-direction: row;
     align-items: center;
     border: 0;
@@ -64,11 +65,22 @@
     width: 100%;
 
 }
-.slidenav_button:hover{
+
+.slidenav_button:hover {
     cursor: pointer;
     background-color: rgba(255, 255, 255, 0.12);
 }
-.slidenav_button > span{
+
+.active {
+  .slidenav_button{
+    background-color: #7C7C7C;
+    color: white;
+  }
+}
+
+
+
+.slidenav_button  span{
     font-size: 18px;
     font-weight: bolder;
     margin-left: 18px;

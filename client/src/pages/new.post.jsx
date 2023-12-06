@@ -35,6 +35,15 @@ export default function NewPost() {
 
   const [id_post, setIDpost] = useState()
   
+  const [errorid_ct, setErrorId_ct] = useState();
+  const [errorid_sb_ct, setErrorId_Sb_Ct] = useState();
+  const [errortitulo, setErrorTitulo] = useState();
+  const [errordescp1, setErrorDesc1] = useState();
+  const [errorid_dfct, setErrorId_dfct] = useState();
+  const [errorid_region, setErrorID_region] = useState();
+  const [errorid_comuna, setErrorID_comuna] = useState();
+  const [errorimg1, setErrorImg1] = useState();
+  const [errorCoord, setErrorCoord] = useState();
 
   const id = auth.id;
   const [id_ct, setId_ct] = useState();
@@ -56,7 +65,6 @@ export default function NewPost() {
   const [coordx, setCoordx] = useState();
   const [coordy, setCoordy] = useState();
 
-  
 
   const handleInputChange = (valores) => {
     setTitulo(valores.titulo);
@@ -98,62 +106,81 @@ export default function NewPost() {
 
   const handleNewPost = async (event) => {
     event.preventDefault();
+    
     openLoeader()
-    if(files.length >= 4) {
+    if(files.length < 1) {
+      setErrorImg1(true);
+      closeLoader()
+    }
+    if(!id_ct){
+      setErrorId_ct(true);
+      closeLoader()
+    }
+    if(!id_sb_ct){
+      setErrorId_Sb_Ct(true);
+      closeLoader()
+    }
+    if(!titulo){
+      setErrorTitulo(true);
+      closeLoader()
+    }
+    if(!descp1){
+      setErrorDesc1(true);
+      closeLoader()
+    }
+    if(!id_dfct){
+      setErrorId_dfct(true);
+      closeLoader()
+    }
+    if(!id_region){
+      setErrorID_region(true);
+      closeLoader()
+    }
+    if(!id_comuna){
+      setErrorID_comuna(true);
+      closeLoader()
+    }
+    if(!coordx && !coordy){
+      setErrorCoord(true);
+      closeLoader()
+    }else {
       const result = await auth.setPostImages(files, id_post);
       setFileUrls(result)
       console.log("newPost: ",fileUrls)
-      if(fileUrls.length >= 4){
-        const [ url1, url2, url3, url4, url5 ] = fileUrls;
-        setImg1(url1);
-        setImg2(url2);
-        setImg3(url3);
-        setImg4(url4);
-        setImg5(url5);
-        
-        console.log(id, id_ct, id_sb_ct, titulo, descp1, descp2, descp3, descp4, 
-          descp5, id_dfct, id_region, id_comuna, img1, img2, img3, img4, 
-          img5, coordx, coordy)
-        await nwPost(
-          id, id_ct, id_sb_ct, titulo, descp1, descp2, descp3, descp4, 
-          descp5, id_dfct, id_region, id_comuna, img1, img2, img3, img4, 
-          img5, coordx, coordy)
-          .then((data) => {
-            if( data.success === true ) {
-              closeLoader()
-              alert("Post Registrado Correctamente");
-              navigate("/home");
-            } else {
-              auth.elimanarCarpetaID(id_post);
-              closeLoader()
-              console.log(data)
-              alert("Faltan campos por seleccionar y rellenar, vuelve a ingresarlos e intentalo de nuevo")
-              // const arrayEr = 
-              // data.map((item) => {
-              //   // console.log(item.msg)
-              //   alert(`${item.msg} in ${item.path}`)
-              // })
-              // alert(arrayEr)
-              // navigate("/user/newPost")
-            }
-          }).catch((error) => {
-            auth.elimanarCarpetaID(id_post);
-            console.error('Error al obtener los datos del post:', error.data);
-          });
-      }else {
-        await auth.elimanarCarpetaID(id_post)
-        closeLoader()
-        alert("Faltan Datos por ingresar");
-      }
-    }else {
-      closeLoader()
+      const [ url1, url2, url3, url4, url5 ] = fileUrls;
+      setImg1(url1);
+      setImg2(url2);
+      setImg3(url3);
+      setImg4(url4);
+      setImg5(url5);
+
       console.log(id, id_ct, id_sb_ct, titulo, descp1, descp2, descp3, descp4, 
           descp5, id_dfct, id_region, id_comuna, img1, img2, img3, img4, 
           img5, coordx, coordy)
-      alert("Faltan Datos por ingresar");
-    }
-    
 
+      await nwPost(
+        id, id_ct, id_sb_ct, titulo, descp1, descp2, descp3, descp4, 
+        descp5, id_dfct, id_region, id_comuna, img1, img2, img3, img4, 
+        img5, coordx, coordy)
+        .then((data) => {
+          if( data.success === true ) {
+            closeLoader()
+            alert("Post Registrado Correctamente");
+            navigate("/home");
+          } else {
+            auth.elimanarCarpetaID(id_post);
+            closeLoader()
+            console.log(data)
+            alert("Faltan campos por seleccionar y rellenar, vuelve a ingresarlos e intentalo de nuevo")
+            
+          }
+        }).catch((error) => {
+          auth.elimanarCarpetaID(id_post);
+          console.error('Error al obtener los datos del post:', error);
+      });
+
+      
+    }
   }
   
 
@@ -170,34 +197,51 @@ export default function NewPost() {
             <form className="form" onSubmit={handleNewPost}>
               <header>Crear Nueva Publicación</header>
                 <div className="content-input">
-                  <InputsPosts onInputChange={handleInputChange} />
+                  <InputsPosts 
+                    errorTitulo={errortitulo}
+                    errorDescp1={errordescp1}
+                    onInputChange={handleInputChange} />
                 </div>
               <div className="hero-content">
                 <div className="hero-select-map">
                   <div className="left">
-                    <SelectInputs  onMapCenterChange={handleMapCenterChange} onSelectChange={handleSelectChange}/>
+                    <SelectInputs  
+                        errorIdregion={errorid_region}
+                        errorIdcomuna={errorid_comuna}
+                        errorIdcategoria={errorid_ct}
+                        errorIdsubCategoria={errorid_sb_ct}
+                        errorIddificultad={errorid_dfct}
+                        onMapCenterChange={handleMapCenterChange} 
+                        onSelectChange={handleSelectChange}/>
                   </div>
                   <div className="right">
                     <div className="map-input">
-                      <Map mapCnter={mapCenter} ClickCoord={handleClickCoord} />
-                      <div className="field email-field">
+                      <Map 
+                          mapCnter={mapCenter} 
+                          ClickCoord={handleClickCoord} />
+                    </div>
+                    <div className="field email-field">
+                      {errorCoord &&
                         <span className="error email-error">
                           <i className="bx bx-error-circle error-icon"></i>
-                          <p className="error-text">Please enter a valid email</p>
+                          <p className="error-text">Debes Seleccionar un punto en el mapa</p>
                         </span>
-                      </div>
+                      }
                     </div>
                   </div>
                 </div>
                 <div className="hero-input">
                   <div className="field email-field">
                     <div  >
-                      <DropFileInput onFileChange={(files) => onFileChange(files)} />
+                      <DropFileInput 
+                          onFileChange={(files) => onFileChange(files)} />
                     </div>
-                    <span className="error email-error">
-                      <i className="bx bx-error-circle error-icon"></i>
-                      <p className="error-text">Please enter a valid email</p>
-                    </span>
+                    {errorimg1 &&
+                      <span className="error email-error">
+                        <i className="bx bx-error-circle error-icon"></i>
+                        <p className="error-text">Debes Ingresar una imagen como minimo</p>
+                      </span>
+                    }
                   </div>
                 </div>
               </div>

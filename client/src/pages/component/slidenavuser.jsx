@@ -21,7 +21,7 @@ export function Slidenavuser() {
     const navigate = useNavigate();
 
     const id = auth.id;
-    const displyNme = auth.userName;
+    // const displyNme = auth.userName;
     const phtURL = auth.phto;
     const [User, setUser] = useState()
 
@@ -35,11 +35,11 @@ export function Slidenavuser() {
     },[id])
     
 
-    const [showNavbar, setShowNavbar] = useState(false)
-  
-    const handleShowNavbar = () => {
-      setShowNavbar(!showNavbar)
-    }
+  //   const [showNavbar, setShowNavbar] = useState(false)
+  // 
+  //   const handleShowNavbar = () => {
+  //     setShowNavbar(!showNavbar)
+  //   }
   
     const handleLogout = () => {
       auth.logout()

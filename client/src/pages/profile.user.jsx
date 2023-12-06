@@ -36,7 +36,7 @@ const UserProfile = () => {
       <div className="user-profile">
         {user ? 
           <>
-            <img src={imagen} className="user-image" />
+            <img src={user[6]} className="user-image" />
             <h2>{user[1]}</h2>
             <p>Nombre: {user[2]}</p>
             <p>Email: {user[3]}</p>

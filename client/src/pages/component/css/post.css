@@ -10,16 +10,23 @@
 }
 
 .post {
-  background-image: url("../../assets/img/post1.jpg");
+  /* background-image: url("../../assets/img/post1.jpg"); */
+  background-color: white;
+  color: black;
   display: flex;
   flex-direction: column;
   padding: 10px 25px;
   border-radius: 15px;
   margin-right: 60px;
   margin-bottom: 20px;
-  height: 600px;
-  width: 600px;
+  height: 550px;
+ width: 600px;
   box-shadow: 1px 8px 25px rgba(0, 0, 0, 0.5);
+}
+
+.post a {
+  color: black;
+  text-decoration: none;
 }
 
 .post-header {
@@ -32,17 +39,30 @@
   height: 70px;
 }
 
+.post-header img {
+  width: 100%;
+}
+
+.post-header span {
+  margin-right: 10px;
+  font-size: 17px;
+}
+
 .post-headerAutor {
   display: flex;
   flex-direction: row;
   align-items: center;
   font-family: 'Text Me One', sans-serif;
   font-size: 150%;
-  color: rgb(255, 255, 255);
+  color: black;
 }
 
 .post-headerAutor h3 {
   margin-left: 20px;
+}
+
+.post-headerAutor a {
+  text-decoration: none;
 }
 
 .time-post {
@@ -80,12 +100,12 @@
   position: relative;
   top: 0;
   margin: 0;
-
+  color: black;
 }
 
 .h2 {
   font-family: 'Quicksand', sans-serif;
-  color: rgb(255, 255, 255);
+  color: black;
   position: relative;
   top: 1px;
   font-size: 25px;
@@ -94,23 +114,26 @@
 .h2 p {
   text-align: relative;
   top: 10px;
-  color: rgb(255, 255, 255);
+  color: black;
   font-size: 80%;
   margin: 0;
   padding: 0;
 
 }
 
-.caja-de-texto {
+.contenedor {
   text-align: left; /* Alinea el texto a la izquierda dentro de la caja */
   vertical-align: top;
   height: 50px;
   width: 500px; /* Ancho de la caja de entrada de texto */
   padding: 10px; /* Espacio interno (padding) para la caja de texto */
   font-size: 16px; /* Tamaño de fuente */
-  border: 1px solid #ccc; /* Borde de la caja de texto */
-  border-radius: 5px; /* Borde redondeado */
   outline: none; /* Eliminar el resaltado al enfocar la caja */
+}
+
+.contenedor p {
+  margin: 0;
+  margin-left: 10px;
 }
 
 .post-img{
@@ -122,6 +145,8 @@
   overflow: hidden;
   text-align: center;
 }
+
+
 
 @media (max-width: 1400px) {
   /* .posts { */

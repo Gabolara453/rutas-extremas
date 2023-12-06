@@ -22,7 +22,7 @@ html{
   justify-content: space-around;
   align-items: center;
   z-index: 100;
-  background-color: #fffefe;
+  background-color: #555555;
   box-shadow: 0 5px 5px rgb(0, 0, 0, 0.2);
 }
 
@@ -43,6 +43,9 @@ html{
 .public{
   display: flex;
   flex-direction: row;
+  position: relative;
+  /* padding-bottom: 4em; */
+  /* min-height: 100vh; */
 }
 .public_nav{
   flex: 0.2

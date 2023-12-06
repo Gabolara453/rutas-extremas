@@ -10,7 +10,7 @@ import {
   getDfct 
 } from "../../../context/auth.backend";
 
-function SelectInputs({onMapCenterChange, onSelectChange}){
+function SelectInputs({errorIdregion, errorIdcomuna, errorIdcategoria, errorIdsubCategoria, errorIddificultad, onMapCenterChange, onSelectChange}){
   const [options1, setOptions1] = useState([]);
   const [options2, setOptions2] = useState([]);
   const [options3, setOptions3] = useState([]);
@@ -139,8 +139,8 @@ function SelectInputs({onMapCenterChange, onSelectChange}){
 
   useEffect(() => {
     if ( id_post && id_ct && id_sb_ct && id_dfct && id_region && id_comuna ) {
-    onSelectChange( { id_post, id_ct, id_sb_ct, id_dfct, id_region, id_comuna })
-  }
+      onSelectChange( { id_post, id_ct, id_sb_ct, id_dfct, id_region, id_comuna })
+    }
   }, [id_post, id_ct, id_sb_ct, id_dfct, id_region, id_comuna]);
 
   
@@ -154,10 +154,12 @@ function SelectInputs({onMapCenterChange, onSelectChange}){
             {options4}
           </select>
         </div>
-        <span className="error email-error">
-          <i className="bx bx-error-circle error-icon"></i>
-          <p className="error-text">Please enter a valid email</p>
-        </span>
+        {errorIdregion &&
+          <span className="error email-error">
+            <i className="bx bx-error-circle error-icon"></i>
+            <p className="error-text">El campo de Region no puede estar vacio</p>
+          </span>
+        }
       </div>
       <div className="field email-field">
         <div className="input-field">
@@ -166,10 +168,12 @@ function SelectInputs({onMapCenterChange, onSelectChange}){
             {options5}
           </select>
         </div>
-        <span className="error email-error">
-          <i className="bx bx-error-circle error-icon"></i>
-          <p className="error-text">Please enter a valid email</p>
-        </span>
+        {errorIdcomuna &&
+          <span className="error email-error">
+            <i className="bx bx-error-circle error-icon"></i>
+            <p className="error-text">El campo de Comuna no puede estar vacio</p>
+          </span>
+        }
       </div>
       <div className="field email-field">
         <div className="input-field">
@@ -178,10 +182,12 @@ function SelectInputs({onMapCenterChange, onSelectChange}){
             {options1}
           </select>
         </div>
-        <span className="error email-error">
-          <i className="bx bx-error-circle error-icon"></i>
-          <p className="error-text">Please enter a valid email</p>
-        </span>
+        {errorIdcategoria &&
+          <span className="error email-error">
+            <i className="bx bx-error-circle error-icon"></i>
+            <p className="error-text">El campo de Categoria no puede estar vacio</p>
+          </span>
+        }
       </div>
       <div className="field email-field">
         <div className="input-field">
@@ -190,10 +196,12 @@ function SelectInputs({onMapCenterChange, onSelectChange}){
             {options2}
           </select>
         </div>
-        <span className="error email-error">
-          <i className="bx bx-error-circle error-icon"></i>
-          <p className="error-text">Please enter a valid email</p>
-        </span>
+        {errorIdsubCategoria &&
+          <span className="error email-error">
+            <i className="bx bx-error-circle error-icon"></i>
+            <p className="error-text">El campo de SubCategoria no puede estar vacio</p>
+          </span>
+        }
       </div>
       <div className="field email-field">
         <div className="input-field">
@@ -202,10 +210,12 @@ function SelectInputs({onMapCenterChange, onSelectChange}){
             {options3}
           </select>
         </div>
-        <span className="error email-error">
-          <i className="bx bx-error-circle error-icon"></i>
-          <p className="error-text">Please enter a valid email</p>
-        </span>
+        {errorIddificultad &&
+          <span className="error email-error">
+            <i className="bx bx-error-circle error-icon"></i>
+            <p className="error-text">El campo de Dificultad no puede estar vacio</p>
+          </span>
+        }
       </div>
     </>
   )
