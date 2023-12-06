@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import LocationIcon from '../../assets/img/location.png'
-import { MapContainer, TileLayer, Marker, Popup, useMapEvents, FeatureGroup } from 'react-leaflet'
+import React, { useState, useEffect } from 'react';
+import LocationIcon from '../assets/img/location.png'
+import { MapContainer, TileLayer, Marker, Popup,  FeatureGroup } from 'react-leaflet'
 import "leaflet/dist/leaflet.css";
 import L  from 'leaflet';
 import 'leaflet-draw/dist/leaflet.draw.css';
@@ -13,40 +13,29 @@ const customIcon = new L.Icon({
     popupAnchor: [0, -32],  // Punto de anclaje del popup
   });
 
-function Map({mapCnter, ClickCoord}) {
+function MapView({coordenates}) {
 
+  const [clickedPosition, setClickedPosition] = useState();
+  // 
+  // const handleMapClick = (e) => {
+  //   const { lat, lng } = e.latlng;
+  //   setClickedPosition({ lat, lng });
+  // }; 
   
-  const [clickedPosition, setClickedPosition] = useState(null);
+  useEffect(() => {
+    if(!coordenates) return;
+    setClickedPosition({lat:coordenates[0], lng:coordenates[1]});
+  }, [coordenates])
 
+  console.log(coordenates)
   
-  
-  const MapClickHandler = ({ onClick }) => {
-    const map = useMapEvents({
-      click: (e) => {
-        onClick(e);
-        map.locate();
-      },
-    });
-
-    return null;
-  };
-
-
-  const handleMapClick = (e) => {
-    const { lat, lng } = e.latlng;
-    ClickCoord({ lat, lng })
-    setClickedPosition({ lat, lng });
-  }; 
-
   return (
-    <div>      
-      <div>
+    <>      
         <MapContainer 
-          key={`${mapCnter[0]}-${mapCnter[1]}`} 
-          center={mapCnter} 
+          key={`${coordenates[0]}-${coordenates[1]}`} 
+          center={coordenates} 
           zoom={10} 
-          style={{ height: '400px', width: '100%' }} 
-          onclick={(e) => handleMapClick(e)}
+          style={{ height: '600px', width: '400px' }}
         >
           <TileLayer
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -67,18 +56,16 @@ function Map({mapCnter, ClickCoord}) {
               }}
             />
           </FeatureGroup>
+           
           
-          <MapClickHandler onClick={handleMapClick} />
           {clickedPosition && (
             <Marker position={[clickedPosition.lat, clickedPosition.lng]} icon={customIcon}>
-              
               <Popup>Coordenadas: {clickedPosition.lat}, {clickedPosition.lng}</Popup>
             </Marker>
           )}
       </MapContainer>
-      </div>
-    </div>
+    </>
   );
 };
 
-export default Map;
+export default MapView;

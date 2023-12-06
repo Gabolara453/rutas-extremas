@@ -3,6 +3,7 @@ import { check } from "express-validator";
 import validarCampos from "../midleware/validate.camps.js";
 import { 
   getPosts,
+  getPosted,
   get_ID_newPost,
   newPosted,
   updatePosted,
@@ -14,7 +15,12 @@ const router = Router();
 
 router.get("/Posts", getPosts);
 
-router.get("/getID-post", get_ID_newPost )
+router.post("/Posted", getPosted);
+
+router.get("/getID-post", 
+  [ check("id").not().isEmpty()]
+  , get_ID_newPost 
+);
 
 router.post("/new-Post",
   [ check("id_user").not().isEmpty(),

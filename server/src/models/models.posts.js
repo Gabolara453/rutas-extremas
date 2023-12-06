@@ -24,7 +24,7 @@ export async function get_Posts() {
         select U.id, U.id_user, U.username, U.photURL, P.id, CT.nombre_categoria, SB.nombre_sb_ct, P.titulo, 
           D.dscp1, D.dscp2, D.dscp3, D.dscp4, D.dscp5, 
           DF.nombre_dificultad, R.nombre_region, C.nombre_comuna, 
-          I.img1, I.img2, I.img3, I.img4, I.img5, CD.coord_x, CD.coord_y, P.created_it 
+          I.img1, I.img2, I.img3, I.img4, I.img5, CD.coord_x, CD.coord_y, P.created_it
           from post P inner join categoria CT on P.id_ctg = CT.id
           inner join sub_categoria SB on P.id_sb_ctg = SB.id
           inner join dificultad DF on P.id_dificult = DF.id
@@ -38,6 +38,38 @@ export async function get_Posts() {
           inner join usuario U on UPO.id_usrp_ = U.id
           order by P.id desc
       `
+    );
+    const result = response.rows;
+    return result;
+  } catch (error) {
+    console.error(error);
+  } finally {
+    closeConnection();
+  }
+}
+
+export async function get_Posted(id) {
+  try{
+    connection = await oracleDB.getConnection(connection_db);
+    const response = await connection.execute(
+      `
+        select U.id, U.id_user, U.username, U.photURL, P.id, CT.nombre_categoria, SB.nombre_sb_ct, P.titulo, 
+          D.dscp1, D.dscp2, D.dscp3, D.dscp4, D.dscp5, 
+          DF.nombre_dificultad, R.nombre_region, C.nombre_comuna, 
+          I.img1, I.img2, I.img3, I.img4, I.img5, CD.coord_x, CD.coord_y, P.created_it, R.coordenate_x, R.coordenate_y 
+          from post P inner join categoria CT on P.id_ctg = CT.id
+          inner join sub_categoria SB on P.id_sb_ctg = SB.id
+          inner join dificultad DF on P.id_dificult = DF.id
+          inner join ubicacion_post UP on P.id_ubi_post = UP.id
+          inner join regiones R on UP.id_rgn_p = R.id 
+          inner join comunas C on UP.id_cma_p = C.id
+          inner join images I on P.id_img = I.id 
+          inner join descripcion_post D on P.id_dscp_p = D.id
+          inner join coordenates CD on P.id_cdts = CD.id
+          inner join user_post UPO on P.id = UPO.id_post_
+          inner join usuario U on UPO.id_usrp_ = U.id
+          where P.id = :id
+      `, [id]
     );
     const result = response.rows;
     return result;

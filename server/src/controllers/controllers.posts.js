@@ -1,12 +1,12 @@
 import { response } from 'express';
 import { checkUserExist } from '../models/models.auth.js';
-import { get_ID_Post, newPost, updatePost, updateStructPost, deletePost, get_Posts } from '../models/models.posts.js';
+import { get_ID_Post, newPost, updatePost, updateStructPost, deletePost, get_Posts, get_Posted } from '../models/models.posts.js';
 
 export const getPosts = async ( req, res = response ) => {
   try {
     const response = await get_Posts();
     if(!response){  
-      return res.json({succes: true, response }).status(200);
+      return res.json({succes: true, response}).status(200);
     }else{
       return res.json({succes: true, response}).status(200);
     }
@@ -15,6 +15,19 @@ export const getPosts = async ( req, res = response ) => {
   }
 }
 
+export const getPosted = async ( req, res = response ) => {
+  const { id } = req.body;
+  try {
+    const response = await get_Posted(id);
+    if(response){  
+      return res.json({succes: true, response}).status(200);
+    }else{
+      return res.json({succes: false, response}).status(200);
+    }
+  } catch (error) {
+    console.error(error)
+  }
+}
 
 export const get_ID_newPost = async ( req, res = response ) => {
   try {

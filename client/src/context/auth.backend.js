@@ -157,6 +157,28 @@ export async function get_Post() {
   }
 }
 
+export async function get_Posted(_id) {
+  try {
+    const response = await fetch(`/posts/Posted`, {
+        method: 'POST',
+        body: JSON.stringify({ id: _id }),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+    });
+    const data = await response.json();
+    if (response.status > 300) { 
+      const errors = data.errors;
+      return errors;
+    } else {
+      return data;
+    }
+  } catch (error) {
+    console.error('Error al obtener los datos:', error);
+    throw error; // Puedes manejar el error aquí o pasarlo al componente que llama a esta función
+  }
+}
+
 export async function getID_nwPost() {
   try {
     const response = await fetch(`/posts/getID-post`, {

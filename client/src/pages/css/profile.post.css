@@ -1,0 +1,91 @@
+
+.posted {
+  position: relative;
+  top: 110px;
+  left: 180px;
+  z-index: 2;
+  display: flex;
+  padding: 30px 40px;
+  padding-bottom: 40px;
+  /* justify-content: center; */
+  background-color: transparent;
+}
+
+.container-post {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  /* height: 450px; */
+  width: 1000px;
+  padding: 25px;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+.container-post h2 {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 1px 2px;
+  color: #333;
+}
+
+.container-post ul {
+  display: flex;
+  flex-direction: row;
+  margin-right: 5px;
+}
+
+.container-post li {
+  list-style-type: none;
+  font-weight: 70;
+  margin-right: 3em;
+}
+
+.container-post .hero-posted {
+  display: flex;
+  background-color: #efefef;
+  flex-direction: row;
+  z-index: 2;
+  /* height: 450px; */
+  padding: 20px 40px;
+  margin-bottom: 20px;
+}
+
+.descripciones {
+  margin: 0px;
+  margin-top: 20px;
+  margin-right: 20px;
+}
+
+.descripcion {
+  width: 400px;
+  margin-bottom: 10px;
+}
+
+.imagenes {
+  width: 650px;
+  height: 100%;
+  margin-left: 40px;
+  align-items: center;
+  align-self: center;
+}
+
+.imagen {
+  width: 650;
+}
+
+.imagen img {
+  width: 80%;
+  border-radius: 8px;
+}
+
+.map-view {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  border-radius: 10px;
+  box-shadow: 3px 3px 3px 3px #555;
+}
+
+

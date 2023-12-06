@@ -204,12 +204,12 @@ export default function NewPost() {
           :<div className="container-nw">
             <form className="form" onSubmit={handleNewPost}>
               <header>Crear Nueva Publicación</header>
-                <div className="content-input">
-                  <InputsPosts 
-                    errorTitulo={errortitulo}
-                    errorDescp1={errordescp1}
-                    onInputChange={handleInputChange} />
-                </div>
+              <div className="content-input">
+                <InputsPosts 
+                  errorTitulo={errortitulo}
+                  errorDescp1={errordescp1}
+                  onInputChange={handleInputChange} />
+              </div>
               <div className="hero-content">
                 <div className="hero-select-map">
                   <div className="left">
